@@ -1,23 +1,46 @@
 package io.github.wotjd243.ecommerce.product.domain;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Item {
 
-    private String title;                   // 물품의 이름
-    private Double price;                   // 물품의 가격(현재가)
-    private URL galleryUrl;              // 물품의 이미지URL
-    private SellingState sellingState;            // 판매상태 (Active, Canceled, Ended, EndedWithSales, EndedWithoutSales)
+    private String title;
+    private Double price;
+    private URL galleryUrl;
+    private SellingState sellingState;
 
-    public Item(String title, Double price, URL galleryUrl, SellingState sellingState) {
+    public Item(String title, Double price, String galleryUrl) {
         this.title = title;
         this.price = price;
-        this.galleryUrl = galleryUrl;
-        this.sellingState = sellingState;
+
+        try {
+            this.galleryUrl = new URL(galleryUrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        this.sellingState = SellingState.ACTIVE;
     }
 
     public boolean isActive() {
         return sellingState.match(SellingState.ACTIVE);
+    }
+
+    public boolean isSamePrice(double price) {
+        return this.price == price;
+    }
+
+    public boolean match(String keywords) {
+        return title.contains(keywords);
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                '}';
     }
 
     enum SellingState {
