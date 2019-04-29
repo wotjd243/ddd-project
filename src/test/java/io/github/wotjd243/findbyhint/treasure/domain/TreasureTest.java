@@ -22,6 +22,6 @@ public class TreasureTest {
         Treasure result =  Treasure.valueOf(1L,"김도영","qrCode","상태",latitude,hardness,startDate,endDate);
 
         // then
-        }
+        }   
     }
 
