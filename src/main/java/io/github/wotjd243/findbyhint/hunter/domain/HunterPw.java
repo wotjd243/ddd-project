@@ -16,6 +16,7 @@ public class HunterPw {
 
     private void validation(String hunterPw){
         check.lengthLimit(hunterPw,20);
+        check.idpwCheck(hunterPw);
     }
 
 

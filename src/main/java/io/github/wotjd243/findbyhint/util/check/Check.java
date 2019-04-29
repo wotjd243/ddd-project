@@ -7,7 +7,7 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 public class Check {
 
-    public void idCheck(String value) {
+    public void idpwCheck(String value) {
 
         char chrInput;
         int length = value.length();
