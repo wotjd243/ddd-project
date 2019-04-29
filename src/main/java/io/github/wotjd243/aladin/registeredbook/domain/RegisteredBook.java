@@ -30,4 +30,9 @@ public class RegisteredBook {
     public void setEnrollment(Enrollment enrollment) {
         this.enrollment = enrollment;
     }
+
+    public boolean equalsBook(RegisteredBook registeredBook) {
+
+        return this.id.equals(registeredBook.id);
+    }
 }
