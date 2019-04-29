@@ -1,27 +1,62 @@
 package io.github.wotjd243.findbyhint.treasure.domain;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+import org.springframework.util.StringUtils;
+
 import java.time.LocalDate;
 
 public class Treasure {
-    // TODO (1) 보물이 생성될때 러닝타임의 시작일 과 종료일은
-    // TODO (2) 1에서 151 사이의 값을 갖도록 유효성 검사
+
+    // TODO (2) 보물의 위치 : 위도 경도 VO로 만들기
+    // TODO (3) 러닝타임 : 시작일 종료일 VO로 만들기
+
+    private Long id;
 
     //보물의 이름
-    private final String name;
+    private String name;
 
     //보물로 접근할 수 있는 QR코드
-    private final String qrCode;
+    private String qrCode;
 
-    // 러닝타임 시작일
-    private final LocalDate startDate;
+    //현재상태
+    private String runningStatus;
 
-    // 러닝타임 종료일
-    private final LocalDate endDate;
+    private TargetPoint targetPoint;
 
-    public Treasure(String name, String qrCode, LocalDate startDate, LocalDate endDate) {
+    private RunningTime runningTime;
+
+
+    private Treasure(Long id, String name, String qrCode, String runningStatus,final String latitude,final String hardness,
+                     final LocalDate startDate,final LocalDate endDate) {
+
+        validation(id,name,qrCode,runningStatus);
+        this.id = id;
         this.name = name;
         this.qrCode = qrCode;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.runningStatus = runningStatus;
+        this.targetPoint= TargetPoint.valueOfIatitudeAndHardness (latitude,hardness);
+        this.runningTime = RunningTime.valueOfStartDateAndEndDate(startDate,endDate);
+    }
+
+    public static Treasure valueOf(Long id, String name, String qrCode, String runningStatus,
+                                   String latitude,final String hardness,
+                                   final LocalDate startDate,final LocalDate endDate){
+        return new Treasure(id,name,qrCode,runningStatus,latitude,hardness,startDate,endDate);
+    }
+
+    public void validation(Long id, String name, String qrCode, String runningStatus){
+        if(id == null || StringUtils.isEmpty(name)|| StringUtils.isEmpty(qrCode)|| StringUtils.isEmpty(runningStatus)){
+            new IllegalArgumentException("Treasure 에서 예외 발생");
+        }
+    }
+    public String TreasureInfo() {
+        return "Treasure{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", qrCode='" + qrCode + '\'' +
+                ", runningStatus='" + runningStatus + '\'' +
+                ", targetPoint=" + targetPoint.getTargetPoint().get("latitude") + targetPoint.getTargetPoint().get("hardness") + '\'' +
+                ", runningTime=" + runningTime.getRunningTime().get("startDate") + runningTime.getRunningTime().get("endDate") + '\'' +
+                '}';
     }
 }
