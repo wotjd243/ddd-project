@@ -1,5 +1,8 @@
 package io.github.wotjd243.ecommerce.Item.domain;
 
+import io.github.wotjd243.ecommerce.buyer.domain.Buyer;
+import io.github.wotjd243.ecommerce.buyer.domain.ItemOrder;
+import io.github.wotjd243.ecommerce.buyer.domain.Order;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -7,9 +10,8 @@ import static org.junit.Assert.*;
 public class ItemTest {
 
     @Test
-    public void 아이템_생성() {
-
-        new Item("Harry Potter",25.45,
-                "http:\\/\\/thumbs1.ebaystatic.com\\/m\\/m80hGwQEYVi2QUduAtjeVhw\\/140.jpg", "Active");
+    public void 구매자_생성() {
+       new Buyer(1, "baker street 221b", 0);
     }
+
 }
