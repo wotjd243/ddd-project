@@ -11,7 +11,7 @@ public class DateObject {
     private LocalDateTime localDateTime;
 
     public DateObject() {
-        date = LocalDate.now();
+                date = LocalDate.now();
         time = LocalTime.now();
         localDateTime = LocalDateTime.now();
     }
