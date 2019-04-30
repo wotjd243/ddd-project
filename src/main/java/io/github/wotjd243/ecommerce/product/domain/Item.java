@@ -6,13 +6,13 @@ import java.net.URL;
 public class Item {
 
     private String title;
-    private Double price;
+    private Dollar price;
     private URL galleryUrl;
     private SellingState sellingState;
 
     public Item(String title, Double price, String galleryUrl) {
         this.title = title;
-        this.price = price;
+        this.price = new Dollar(price);
 
         try {
             this.galleryUrl = new URL(galleryUrl);
@@ -28,7 +28,7 @@ public class Item {
     }
 
     public boolean isSamePrice(double price) {
-        return this.price == price;
+        return this.price.equals(price);
     }
 
     public boolean match(String keywords) {
