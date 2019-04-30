@@ -11,6 +11,8 @@ public class User {
     @GeneratedValue
     private Long id;
     private String name;
+    private String email;
+    private String password;
     private String phoneNumber;
     private LocalDate birthDay;
 }
