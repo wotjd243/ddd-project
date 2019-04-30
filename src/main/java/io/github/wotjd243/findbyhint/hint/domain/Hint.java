@@ -3,6 +3,7 @@ package io.github.wotjd243.findbyhint.hint.domain;
 public class Hint {
     // TODO (1) 힌트는 지도상에 범위로 표현된다.
     // TODO (2) 힌트를 풀면 해당힌트가 가지고 있는 반지름을 토대로  원의 면적을 보여준다.
+    // 깃테스트
     private final Long hintNum;
     private double radius;
 
