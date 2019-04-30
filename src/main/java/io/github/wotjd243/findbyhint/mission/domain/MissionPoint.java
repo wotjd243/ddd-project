@@ -6,7 +6,7 @@ public class MissionPoint {
     public MissionPoint(final int point) {
         randomPoint(point);
         validate(point);
-        this.point = point;
+        this.point = randomPoint(point);
     }
 
     //static 팩토리 메소드(정적 팩토리메소드)
@@ -15,10 +15,11 @@ public class MissionPoint {
     }
 
     //랜덤숫자 생성
-    public void randomPoint(int point) {
+    public int randomPoint(int point) {
         double randomPoint = Math.random();
         point = (int) (randomPoint * 100) +1;
         System.out.println(point);
+        return point;
     }
 
     //유효성 검사
