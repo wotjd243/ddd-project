@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Item {
-
     private String title;
     private Dollar price;
     private URL galleryUrl;
@@ -13,18 +12,13 @@ public class Item {
     public Item(String title, Double price, String galleryUrl) {
         this.title = title;
         this.price = new Dollar(price);
-
-        try {
-            this.galleryUrl = new URL(galleryUrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        setGalleryUrl(galleryUrl);
 
         this.sellingState = SellingState.ACTIVE;
     }
 
     public boolean isActive() {
-        return sellingState.match(SellingState.ACTIVE);
+        return sellingState.isActive();
     }
 
     public boolean isSamePrice(double price) {
@@ -33,6 +27,14 @@ public class Item {
 
     public boolean match(String keywords) {
         return title.contains(keywords);
+    }
+
+    private void setGalleryUrl(String galleryUrl) {
+        try {
+            this.galleryUrl = new URL(galleryUrl);
+        } catch (MalformedURLException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     @Override
@@ -50,14 +52,14 @@ public class Item {
         ENDED_WITH_SALES("EndedWithSales"),
         ENDED_WITHOUT_SALES("EndedWithoutSales");
 
-        private String value;
-
-        private boolean match(SellingState state) {
-            return this.value == state.value;
-        }
+        private final String value;
 
         SellingState(String value) {
             this.value = value;
+        }
+
+        private boolean isActive() {
+            return (this == ACTIVE);
         }
     }
 }
