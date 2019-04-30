@@ -26,7 +26,7 @@ public class HunterId {
 
         check.lengthLimit(hunterId, 20);
 
-        check.idCheck(hunterId);
+        check.idpwCheck(hunterId);
     }
 
 }

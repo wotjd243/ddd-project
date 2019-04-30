@@ -3,7 +3,6 @@ package io.github.wotjd243.findbyhint.mission.domain;
 public class MissionPoint {
 
     private int point;
-
     public MissionPoint(final int point) {
         randomPoint(point);
         validate(point);
