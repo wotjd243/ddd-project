@@ -1,11 +1,13 @@
 package io.github.book.domain.book;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.Builder;
+import org.hibernate.mapping.ToOne;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Builder
 public class BookRentHistory {
     @Id
     @GeneratedValue
@@ -14,4 +16,8 @@ public class BookRentHistory {
     private LocalDateTime rentStartDatetime;
     private LocalDateTime returnDatetime;
     private LocalDateTime returnDeadLine;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 }
