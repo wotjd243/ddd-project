@@ -27,7 +27,6 @@ div.swal2-popup .swal2-styled {
 	border-radius: 25px !important;
     font-size: 17px !important;
 }
-}
 
 div.swal2-icon {
 	/* width: 7em;
@@ -73,7 +72,6 @@ div#swal2-content {
     font-size: 14px;
     font-weight: bold;
     color: #595959;
-    font-size: "note sans";
-    font-family: Roboto;
-    letter-spacing: -1;
+    font-family: Roboto, note sans, serif;
+    letter-spacing: -1px;
 }
