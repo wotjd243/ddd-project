@@ -15,9 +15,6 @@ public class Treasure {
     //보물의 이름
     private String name;
 
-    //보물로 접근할 수 있는 QR코드
-    private String qrCode;
-
     //현재상태
     private String runningStatus;
 
@@ -25,27 +22,33 @@ public class Treasure {
 
     private RunningTime runningTime;
 
+    //보물로 접근할 수 있는 QR코드
+    private QRCodeVO qrCodeVO;
 
-    private Treasure(Long id, String name, String qrCode, String runningStatus,final String latitude,final String hardness,
+
+    private Treasure(Long id, String name,
+                     String runningStatus,QRCodeVO qrCodeVO,
+                     final String latitude,final String hardness,
                      final LocalDate startDate,final LocalDate endDate) {
 
-        validation(id,name,qrCode,runningStatus);
+        validation(id,name,runningStatus);
         this.id = id;
         this.name = name;
-        this.qrCode = qrCode;
         this.runningStatus = runningStatus;
+        this.qrCodeVO = qrCodeVO;
         this.targetPoint= TargetPoint.valueOfIatitudeAndHardness (latitude,hardness);
         this.runningTime = RunningTime.valueOfStartDateAndEndDate(startDate,endDate);
     }
 
-    public static Treasure valueOf(Long id, String name, String qrCode, String runningStatus,
+    public static Treasure valueOf(Long id, String name, QRCodeVO qrCodeVO,
+                                   String runningStatus,
                                    String latitude,final String hardness,
                                    final LocalDate startDate,final LocalDate endDate){
-        return new Treasure(id,name,qrCode,runningStatus,latitude,hardness,startDate,endDate);
+        return new Treasure(id,name,runningStatus,qrCodeVO,latitude,hardness,startDate,endDate);
     }
 
-    public void validation(Long id, String name, String qrCode, String runningStatus){
-        if(id == null || StringUtils.isEmpty(name)|| StringUtils.isEmpty(qrCode)|| StringUtils.isEmpty(runningStatus)){
+    public void validation(Long id, String name, String runningStatus){
+        if(id == null || StringUtils.isEmpty(name)|| StringUtils.isEmpty(runningStatus)){
             new IllegalArgumentException("Treasure 에서 예외 발생");
         }
     }
@@ -53,7 +56,7 @@ public class Treasure {
         return "Treasure{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", qrCode='" + qrCode + '\'' +
+                ", qrCodeVO='" + qrCodeVO + '\'' +
                 ", runningStatus='" + runningStatus + '\'' +
                 ", targetPoint=" + targetPoint.getTargetPoint().get("latitude") + targetPoint.getTargetPoint().get("hardness") + '\'' +
                 ", runningTime=" + runningTime.getRunningTime().get("startDate") + runningTime.getRunningTime().get("endDate") + '\'' +
