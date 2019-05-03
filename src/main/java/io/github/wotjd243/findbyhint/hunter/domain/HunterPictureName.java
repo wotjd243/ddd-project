@@ -1,7 +1,6 @@
 package io.github.wotjd243.findbyhint.hunter.domain;
 
 import io.github.wotjd243.findbyhint.util.check.Check;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,18 +10,16 @@ public class HunterPictureName {
 
     private String hunterPictureName;
 
-    Check check = new Check();
-
     public HunterPictureName(String hunterPictureName) {
         validation(hunterPictureName);
         this.hunterPictureName = fileNameUnique(hunterPictureName);
     }
 
     private void validation(String hunterPictureName) {
-        check.imgCheck(hunterPictureName);
+        Check.imgCheck(hunterPictureName);
     }
 
-    private String fileNameUnique(String hunterPictureName){
+    private String fileNameUnique(String hunterPictureName) {
 
         //파일 저장명 처리
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMDDHHmmss");

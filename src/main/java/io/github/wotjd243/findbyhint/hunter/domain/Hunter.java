@@ -2,11 +2,9 @@ package io.github.wotjd243.findbyhint.hunter.domain;
 
 public class Hunter {
 
-    // TODO (1) HunterId 는 영어 소문자로 시작하며 20자를 넘지 않고 영소문자,대문자,숫자로만 이루어져야한다.
-    // TODO (2) hunterPw 는 20자를 넘지 않아야한다. 비크립트로 암호화 필요.
-    // TODO (3) hunterName은 15자를 넘으면 안된다.
-    // TODO (4) hunterPictureName의 확장자는 그림 확장자만 가능 하게 해야 하고 유니크값으로 변환시켜야한다.
-    // TODO (5) hunterPoint의 최대값은 99999점이고 증가 최대치는 100점이다.
+    // TODO (1)‘헌터’는 하루에 미션 하나를 풀 수 있고 기회는 3번이다.
+    // TODO (2)‘헌터' 는 미션 포인트를 100점 모으면 문제를 풀 수 있는 총알을 하나 얻는다.
+    // TODO (3)‘헌터' 가 미션을 풀 수있는 기회의 수는 총알이다. 관련된 객체 생성하기.
 
     private final HunterId hunterId;
 
