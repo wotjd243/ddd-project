@@ -19,16 +19,11 @@ public class RegisteredBook {
 
     private UnitAmount amount;
 
-    private Enrollment enrollment;
 
     public RegisteredBook(Book book, UnitAmount amount) {
         this.id = UUID.randomUUID().getMostSignificantBits();
         this.book = book;
         this.amount = amount;
-    }
-
-    public void setEnrollment(Enrollment enrollment) {
-        this.enrollment = enrollment;
     }
 
     public boolean equalsBook(RegisteredBook registeredBook) {
