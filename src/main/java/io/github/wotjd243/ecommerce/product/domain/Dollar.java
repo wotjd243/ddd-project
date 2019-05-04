@@ -11,6 +11,10 @@ public class Dollar {
         this.price = price;
     }
 
+    public double castToDouble() {
+        return this.price;
+    }
+
     public boolean equals(double price) {
         return Double.compare(price, this.price) == 0;
     }

@@ -29,6 +29,10 @@ public class Item {
         return title.contains(keywords);
     }
 
+    public double price() {
+        return this.price.castToDouble();
+    }
+
     private void setGalleryUrl(String galleryUrl) {
         try {
             this.galleryUrl = new URL(galleryUrl);
