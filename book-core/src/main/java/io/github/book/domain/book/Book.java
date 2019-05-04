@@ -16,19 +16,21 @@ import java.util.Set;
 @NoArgsConstructor
 public class Book {
     @Id
-    @GeneratedValue
-    @Column(name = "book_id")
-    private Long bookId;
-    @Column(nullable = false)
-    private String title;
     @Column(nullable = false, unique = true)
     private String isbn;
+
+    @Column(nullable = false)
+    private String title;
+
     @Column(nullable = false)
     private String author;
+
     @Column(nullable = false)
     private String description;
+
     @Column(nullable = false)
     private LocalDate publishedDate;
+
     @Column(nullable = false, columnDefinition = "bit default 0")
     private boolean isRent;
 

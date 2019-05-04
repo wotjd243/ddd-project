@@ -1,7 +1,7 @@
 package io.github.book.domain.book;
 
+import io.github.book.domain.user.User;
 import lombok.Builder;
-import org.hibernate.mapping.ToOne;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,9 +13,18 @@ public class BookRentHistory {
     @GeneratedValue
     private Long id;
 
+    @Column(nullable = false)
     private LocalDateTime rentStartDatetime;
+
+    @Column(nullable = false)
     private LocalDateTime returnDatetime;
+
+    @Column(nullable = false)
     private LocalDateTime returnDeadLine;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
