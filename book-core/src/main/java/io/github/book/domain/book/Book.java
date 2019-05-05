@@ -17,7 +17,7 @@ import java.util.Set;
 public class Book {
     @Id
     @Column(nullable = false, unique = true)
-    private String isbn;
+    private Long isbn;
 
     @Column(nullable = false)
     private String title;
@@ -37,6 +37,9 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private Set<BookRentHistory> bookRentHistories;
 
+    @OneToOne(mappedBy = "book")
+    private CollectedBook collectedBook;
+
     public void rent() {
         this.isRent = true;
     }
@@ -46,9 +49,9 @@ public class Book {
     }
 
     @Builder
-    public Book(String title, String isbn, String author, String description, LocalDate publishedDate) {
-        this.title = title;
+    public Book(Long isbn, String title, String author, String description, LocalDate publishedDate) {
         this.isbn = isbn;
+        this.title = title;
         this.author = author;
         this.description = description;
         this.publishedDate = publishedDate;
