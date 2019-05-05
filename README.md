@@ -9,8 +9,9 @@
 - 책
     - [x]  책은 고유한 국제 표준 도서 번호(International Standard Book Number, ISBN)를 가진다.
     - [x]  책은 제목과 설명, 저자, 출판일에 대한 정보를 가지고 있다.
-    - [x]  책은 현재 대여 여부에 대한 정보를 가지고 있다.
-    - [x]  이미 대여된 책은 다른 사용자에 의해서 대여될 수 없다.
+- 보유 책
+    - [x]  보유 책은 보유하고 있는 총 수량과 현재 보유하고 있는 수량을 가지고 있다.
+    - [x]  현재 보유하고 있는 수량을 가지고 대여 가능 여부를 구분한다.
 - 대여 기록
     - [x]  대여 기록에는 대여된 날짜, 반납된 날짜, 대여된 책의 정보와 대여한 사람의 정보를 가진다.
     - [x]  대여 기록에는 반납기한 정보를 가진다.
@@ -29,9 +30,10 @@
 
 ### **모델링**
 
-- `Book`은 고유한 ID를 가진다.
+- `Book`은 ISBN 값을 통해 고유한 ID를 가진다.
 - `Book`은 제목, Isbn, 저자, 설명, 출팔일을 가진다.
-- `Book`은 대여 중인지에 대한 상태값을 가진다.(isRent, true : 대여중, false : 미 대여중)
+- `CollectedBook`은 고유한 ID를 가진다.
+- `CollectedBook`은 총 갯수, 현재 보유 중인 수량을 가지고 있다.(현재 보유중인 수량이 0이면 대여 불가)
 - `User`는 고유한 ID를 가진다.
 - `User`는 이름, 전화번호, 생년월일을 가진다.
 - `BookRentHistory`는 고유한 ID를 가진다.
@@ -41,18 +43,24 @@
 
 
     @Entity
-    public class Book {
+    public class CollectedBook {
     	@Id
-    	@GeneratedValue
-    	private Long id;
+    	private String isbn;
     
     	private String title;
-    	private String Isbn;
     	private String author;
     	private String description;
     	private LocalDate publishedDate;
     	private boolean isRent;
     }
+    
+    @Entity
+    public class BookRentHistory {
+        @Id
+        @GeneratedValue
+        private Long id;
+        private int totalQuantity;
+        priavet int nowQuantity;
 
     @Entity
     public class User {
