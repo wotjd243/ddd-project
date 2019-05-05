@@ -8,9 +8,9 @@ import java.util.List;
 public class Cart {
     private String id;
     private User user;
-    private List<Product> productList ;
+    private List<String> productList;
 
-    public Cart(String id, User user, List<Product> productList) {
+    public Cart(String id, User user, List<String> productList) {
         this.id = id;
         this.user = user;
         this.productList = productList;
