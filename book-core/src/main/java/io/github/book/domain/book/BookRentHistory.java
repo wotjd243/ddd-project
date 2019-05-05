@@ -27,6 +27,6 @@ public class BookRentHistory {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_isbn")
     private Book book;
 }

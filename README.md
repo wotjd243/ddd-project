@@ -43,10 +43,9 @@
 
 
     @Entity
-    public class CollectedBook {
+    public class Book {
     	@Id
-    	private String isbn;
-    
+    	private Long isbn;
     	private String title;
     	private String author;
     	private String description;
@@ -55,12 +54,13 @@
     }
     
     @Entity
-    public class BookRentHistory {
+    public class CollectedBook {
         @Id
         @GeneratedValue
         private Long id;
         private int totalQuantity;
-        priavet int nowQuantity;
+        private int nowQuantity;
+    }
 
     @Entity
     public class User {
@@ -77,7 +77,6 @@
     	@Id
     	@GeneratedValue
     	private Long id;
-    
     	private LocalDateTime rentStartDatetime;
     	private LocalDateTime returnDatetime;
     	private LocalDateTime returnDeadLine;
