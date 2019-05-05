@@ -1,7 +1,10 @@
 package io.github.wotjd243.shoppinggogo.user.domain;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+
 import javax.xml.bind.ValidationException;
 import java.util.regex.Pattern;
+
 
 public class Email {
     //email 생성시에 validation 지정
@@ -17,5 +20,6 @@ public class Email {
         boolean emailValidation = Pattern.matches(emailPattern,email);
         if(emailValidation==false) throw new RuntimeException("runtime Exception");
     }
+
 }
 

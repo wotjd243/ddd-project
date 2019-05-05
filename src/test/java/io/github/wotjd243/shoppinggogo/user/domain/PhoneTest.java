@@ -11,13 +11,13 @@ public class PhoneTest {
 
     @Test
     public void phoneValidate(){
-        Phone ph = new Phone("01098890573");
+        Phone phone = new Phone("01098890573");
 //        System.out.println("longType : "+1L);
     }
 
 
-    @Test(expected = ValidationException.class)
-    public void phoneValidate2(){
-        Phone ph = new Phone("0109883");
+    @Test
+    public void 폰번호수가_모자랄때(){
+        Phone phone = new Phone("0109883");
     }
 }

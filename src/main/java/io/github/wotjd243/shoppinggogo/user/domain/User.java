@@ -6,16 +6,17 @@ public class User {
     private Email email;
     private Address address;
     private Phone phoneNumber;
-    private PassWord password;
 
-    public User(Long id, Email email, Address address, Phone phoneNumber, PassWord password) {
+    public User(Long id, String email, String address, String phoneNumber) {
         this.id = id;
-        this.email = email;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
+        this.email = new Email(email);
+        this.address = new Address(address);
+        this.phoneNumber = new Phone(phoneNumber);
     }
 
+    public void changeAddress(String newAddress){
 
+        this.address= new Address(newAddress);
+    }
 
 }
