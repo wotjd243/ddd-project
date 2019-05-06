@@ -2,18 +2,21 @@ package io.github.wotjd243.shoppinggogo.user.domain;
 
 public class User {
 
-    private String id;
-    private String email;
-    private String address;
-    private String phoneNumber;
-    private String password;
+    private Long id;
+    private Email email;
+    private Address address;
+    private Phone phoneNumber;
 
-    public User(String id, String email, String address, String phoneNumber, String password) {
+    public User(Long id, String email, String address, String phoneNumber) {
         this.id = id;
-        this.email = email;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
+        this.email = new Email(email);
+        this.address = new Address(address);
+        this.phoneNumber = new Phone(phoneNumber);
+    }
+
+    public void changeAddress(String newAddress){
+
+        this.address= new Address(newAddress);
     }
 
 }
