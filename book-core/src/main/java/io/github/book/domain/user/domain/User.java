@@ -1,6 +1,6 @@
 package io.github.book.domain.user.domain;
 
-import io.github.book.domain.history.domain.BookRentHistory;
+import io.github.book.domain.collected.domain.CollectedBook;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,10 +17,7 @@ public class User {
     private String name;
 
     @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
+    private Account account;
 
     @Column(nullable = false)
     private String phoneNumber;
@@ -28,6 +25,7 @@ public class User {
     @Column(nullable = false)
     private LocalDate birthDay;
 
-    @OneToMany(mappedBy = "user")
-    private Set<BookRentHistory> bookRentHistories;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Set<CollectedBook> collectedBooks;
 }

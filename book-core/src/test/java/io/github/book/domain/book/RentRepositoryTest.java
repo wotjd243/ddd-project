@@ -1,7 +1,7 @@
 package io.github.book.domain.book;
 
 
-import io.github.book.domain.history.infra.BookRentHistoryRepository;
+import io.github.book.domain.rent.infra.RentRepository;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -9,11 +9,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @DataJpaTest
 @AllArgsConstructor
-class BookRentHistoryRepositoryTest {
-    private BookRentHistoryRepository bookRentHistoryRepository;
+class RentRepositoryTest {
+    private RentRepository rentRepository;
 
     @Test
-    public void createBookRentHistoryTest() {
+    public void createRentTest() {
 
     }
 }

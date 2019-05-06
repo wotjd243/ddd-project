@@ -1,7 +1,5 @@
-package io.github.book.domain.history.domain;
+package io.github.book.domain.rent.domain;
 
-import io.github.book.domain.book.domain.Book;
-import io.github.book.domain.user.domain.User;
 import lombok.Builder;
 
 import javax.persistence.*;
@@ -9,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Builder
-public class BookRentHistory {
+public class Rent {
     @Id
     @GeneratedValue
     private Long id;
@@ -23,11 +21,9 @@ public class BookRentHistory {
     @Column(nullable = false)
     private LocalDateTime returnDeadLine;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(nullable = false)
+    private Long userId;
 
-    @ManyToOne
-    @JoinColumn(name = "book_isbn")
-    private Book book;
+    @Column(nullable = false)
+    private Long collectedBookId;
 }
