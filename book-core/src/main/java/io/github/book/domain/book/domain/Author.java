@@ -1,11 +1,16 @@
 package io.github.book.domain.book.domain;
 
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@Getter
 public class Author {
     private String authorName;
     private Integer authorAge;

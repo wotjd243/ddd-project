@@ -1,8 +1,12 @@
 package io.github.book.domain.collected.infra;
 
-import io.github.book.domain.book.domain.Book;
+import io.github.book.domain.collected.domain.BookRentStatus;
+import io.github.book.domain.collected.domain.CollectedBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CollectedBookRepository extends JpaRepository<Book, Long> {
+import java.util.List;
+import java.util.Optional;
 
+public interface CollectedBookRepository extends JpaRepository<CollectedBook, Long> {
+    Optional<List<CollectedBook>> findByBookRentStatus(BookRentStatus bookRentStatus);
 }

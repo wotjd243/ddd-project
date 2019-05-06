@@ -14,13 +14,10 @@ import javax.persistence.*;
 public class CollectedBook {
     @Id
     @GeneratedValue
-    private Long collected_book_id;
+    private Long collectedBookId;
 
-    @Column(name = "book_isbn", nullable = false, unique = true)
-    private Long bookIsbn;
-
-    @Column(nullable = false, columnDefinition = "bit default 0")
-    private boolean isRent;
+    @Column(name = "book_isbn", nullable = false)
+    private String bookIsbn;
 
     @Embedded
     @AttributeOverrides({
@@ -31,18 +28,27 @@ public class CollectedBook {
     })
     private BookLocation bookLocation;
 
+    @Column(name = "collected_book_rent_status")
+    @Enumerated(EnumType.STRING)
+    private BookRentStatus bookRentStatus = BookRentStatus.RENT_AVAILABLE;
+
     public void rent() {
-        this.isRent = true;
+        if (!this.bookRentStatus.isRent()) {
+            throw new IllegalArgumentException("현재 대여중인 도서입니다.");
+        }
+        this.bookRentStatus = BookRentStatus.RENT_ALREADY;
     }
 
     public void returned() {
-        this.isRent = false;
+        if (this.bookRentStatus.isRent()) {
+            throw new IllegalArgumentException("이미 반납이 완료된 도서입니다.");
+        }
+        this.bookRentStatus = BookRentStatus.RENT_AVAILABLE;
     }
 
     @Builder
-    public CollectedBook(Long bookIsbn, boolean isRent, BookLocation bookLocation) {
+    public CollectedBook(String bookIsbn, boolean isRent, BookLocation bookLocation) {
         this.bookIsbn = bookIsbn;
-        this.isRent = isRent;
         this.bookLocation = bookLocation;
     }
 }

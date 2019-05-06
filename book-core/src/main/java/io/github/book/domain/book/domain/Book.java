@@ -1,6 +1,9 @@
 package io.github.book.domain.book.domain;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,13 +20,20 @@ import java.time.LocalDate;
 public class Book {
     @Id
     @Column(name = "book_isbn", nullable = false, unique = true)
-    private Long isbn;
+    private String isbn;
 
     @Column(name = "book_title", nullable = false)
     private String title;
 
-    @Column(nullable = false)
-    private String author;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "authorName",
+                    column = @Column(name = "book_author_name")),
+            @AttributeOverride(name = "authorAge",
+                    column = @Column(name = "book_author_age"))
+    })
+    @Column(name = "book_author", nullable = false)
+    private Author author;
 
     @Column(nullable = false)
     private String description;
@@ -32,7 +42,7 @@ public class Book {
     private LocalDate publishedDate;
 
     @Builder
-    public Book(Long isbn, String title, String author, String description, LocalDate publishedDate) {
+    public Book(String isbn, String title, Author author, String description, LocalDate publishedDate) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
