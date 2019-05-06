@@ -36,10 +36,9 @@ public class User {
     private Set<CollectedBook> collectedBooks;
 
     @Builder
-    public User(Long id, String name, Account account, String phoneNumber, LocalDate birthDay) {
-        this.id = id;
+    public User(String name, String email, String password, String phoneNumber, LocalDate birthDay) {
         this.name = name;
-        this.account = account;
+        this.account = new Account(email, password);
         this.phoneNumber = phoneNumber;
         this.birthDay = birthDay;
     }
