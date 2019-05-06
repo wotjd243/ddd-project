@@ -1,8 +1,11 @@
 package io.github.wotjd243.shoppinggogo.shipping.application;
 
+import io.github.wotjd243.shoppinggogo.seller.domain.GeneralBusinessNumber;
+import io.github.wotjd243.shoppinggogo.seller.domain.GeneralEmail;
+import io.github.wotjd243.shoppinggogo.seller.domain.GeneralPhoneNumber;
 import io.github.wotjd243.shoppinggogo.shipping.domain.*;
 import io.github.wotjd243.shoppinggogo.shipping.infra.ShippingRepositoryImpl;
-import io.github.wotjd243.shoppinggogo.user.domain.Seller;
+import io.github.wotjd243.shoppinggogo.seller.domain.Seller;
 import io.github.wotjd243.shoppinggogo.utils.ShippingStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +31,7 @@ public class ShippingServiceTest {
 
     @Test
     public void name() {
-        given(shippingRepository.findByShppingNum(any()))
+        given(shippingRepository.findByShppingId(any()))
                 .willReturn(
                         Optional.of(//String id, String shppingNum, String mall, String shippingStatus, String orderId, String position, Date processedDate, Invoice invoice, Seller seller
                                 new Shipping("1","123-1111-1111", "Aladin", ShippingStatus.SHIPPING_DONE.getValue(), "111-2323-4444", "분당점",

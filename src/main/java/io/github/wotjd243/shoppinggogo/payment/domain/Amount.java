@@ -34,4 +34,9 @@ public class Amount {
     public int hashCode() {
         return Objects.hash(amount);
     }
+
+
+    public  static Amount valueOf(final int amount) {
+        return new Amount(amount);
+    }
 }
