@@ -1,6 +1,6 @@
 package io.github.book.domain.book.domain;
 
-import io.github.book.domain.rent.domain.BookRentHistory;
+import io.github.book.domain.history.domain.BookRentHistory;
 import io.github.book.domain.book.CollectedBook;
 import lombok.Builder;
 import lombok.Getter;

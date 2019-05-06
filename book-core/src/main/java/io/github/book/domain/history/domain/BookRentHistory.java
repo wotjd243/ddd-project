@@ -1,4 +1,4 @@
-package io.github.book.domain.rent.domain;
+package io.github.book.domain.history.domain;
 
 import io.github.book.domain.book.domain.Book;
 import io.github.book.domain.user.domain.User;

@@ -1,6 +1,6 @@
 package io.github.book.domain.user.domain;
 
-import io.github.book.domain.rent.domain.BookRentHistory;
+import io.github.book.domain.history.domain.BookRentHistory;
 
 import javax.persistence.*;
 import java.time.LocalDate;
