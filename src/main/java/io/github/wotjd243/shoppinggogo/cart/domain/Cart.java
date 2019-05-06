@@ -2,10 +2,12 @@ package io.github.wotjd243.shoppinggogo.cart.domain;
 
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.user.domain.User;
+import lombok.Data;
 import lombok.Getter;
 
 import java.util.List;
 
+@Data
 public class Cart {
     private Long id; //카트 키
     private String userId; //유저 키
@@ -16,10 +18,6 @@ public class Cart {
         this.id = id;
         this.userId = userId;
         this.products = products;
-    }
-
-    public List<Product> getProducts() {
-        return products;
     }
 
     /**

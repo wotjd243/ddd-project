@@ -1,9 +1,11 @@
 package io.github.wotjd243.shoppinggogo.product.domain;
 
+import lombok.Data;
 import lombok.Getter;
 
 import java.util.Date;
 
+@Data
 public class PriceRecord {
     private Long id; //ID
     @Getter
@@ -23,7 +25,4 @@ public class PriceRecord {
         this.updateDate = updateDate;
     }
 
-    public Integer getLowestPrice() {
-        return lowestPrice;
-    }
 }
