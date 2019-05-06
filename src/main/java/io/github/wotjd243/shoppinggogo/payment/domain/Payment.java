@@ -1,13 +1,24 @@
 package io.github.wotjd243.shoppinggogo.payment.domain;
 
+import io.github.wotjd243.shoppinggogo.seller.domain.Seller;
+import io.github.wotjd243.shoppinggogo.user.domain.User;
+
 import java.util.Date;
 
-public interface Payment {
+public class Payment {
 
-    // card시 iamport uid, 현금결제시 유저의 userId의 잔고서 빠져나가고 판매자의 userId에 돈 줌
-    public void init(String uId);
-    public void pay();
+    private Date paymentDate;  // 결제일자
+    private String id; // 결제번호 { 20190315NP1385814158}
+    private String orderId;    // 상품정보, 상품금액 ,판매자 ( 주문정보 )
+    private Amount amountForPayment; // 결제할 돈
+    private String userId; //유저
 
-
+    public Payment(Date paymentDate, String id, String orderId, Amount amountForPayment, String userId) {
+        this.paymentDate = paymentDate;
+        this.id = id;
+        this.orderId = orderId;
+        this.amountForPayment = amountForPayment;
+        this.userId = userId;
+    }
 }
 
