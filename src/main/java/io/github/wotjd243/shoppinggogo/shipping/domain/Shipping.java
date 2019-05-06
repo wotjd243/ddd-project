@@ -1,15 +1,13 @@
 package io.github.wotjd243.shoppinggogo.shipping.domain;
 
-import io.github.wotjd243.shoppinggogo.user.domain.Seller;
-import io.github.wotjd243.shoppinggogo.utils.ShippingStatus;
+import io.github.wotjd243.shoppinggogo.seller.domain.Seller;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class Shipping implements Serializable {
-    private String id;
     // 배송번호
-    private String shppingNum;
+    private String id;
     private String mall;
     // 배송상태( 물건준비중, 집하, 배송중(입고),  배달중, 배달완료 )
     private String shippingStatus;
@@ -24,10 +22,12 @@ public class Shipping implements Serializable {
     private Invoice Invoice;
     // 판매자 ( 개밥왕, 연락처 )
     private Seller seller;
+    private String destination;
 
-    public Shipping(String id, String shppingNum, String mall, String shippingStatus, String orderId, String position, Date processedDate, Invoice invoice, Seller seller) {
+
+    public Shipping( String id, String mall, String shippingStatus, String orderId, String position, Date processedDate,
+                    Invoice invoice, Seller seller, String destination) {
         this.id = id;
-        this.shppingNum = shppingNum;
         this.mall = mall;
         this.shippingStatus = shippingStatus;
         this.orderId = orderId;
@@ -35,10 +35,7 @@ public class Shipping implements Serializable {
         this.ProcessedDate = processedDate;
         this.Invoice = invoice;
         this.seller = seller;
-    }
-
-    public String getShppingNum() {
-        return shppingNum;
+        this.destination = destination;
     }
 
     public String getMall() {
@@ -51,10 +48,6 @@ public class Shipping implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setShppingNum(String shppingNum) {
-        this.shppingNum = shppingNum;
     }
 
     public void setMall(String mall) {
@@ -85,4 +78,35 @@ public class Shipping implements Serializable {
         ProcessedDate = processedDate;
     }
 
+    public String getShippingStatus() {
+        return shippingStatus;
+    }
+
+    public void setShippingStatus(String shippingStatus) {
+        this.shippingStatus = shippingStatus;
+    }
+
+    public Invoice getInvoice() {
+        return Invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        Invoice = invoice;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 }

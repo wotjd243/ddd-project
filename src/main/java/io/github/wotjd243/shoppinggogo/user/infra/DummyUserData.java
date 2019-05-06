@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DummyUserData {
-    private static final Map<Long,User> users = new HashMap<Long, User>();
+    private static final Map<String,User> users = new HashMap<String , User>();
 
     /*
     private Long id;
@@ -18,20 +18,20 @@ public class DummyUserData {
      */
 
     static {
-        put(1L,"ddd01@daum.net", "서울시","01011112222");
-        put(2L,"ddd02@daum.net", "서울시","01022223333");
-        put(3L,"ddd03@daum.net", "서울시","01033334444");
-        put(4L,"ddd04@daum.net", "서울시","01044445555");
-        put(5L,"ddd05@daum.net", "서울시","01055556666");
-        put(6L,"ddd06@daum.net", "서울시","01066667777");
-        put(7L,"ddd07@daum.net", "서울시","01077778888");
+        put("1","ddd01@daum.net", "서울시","01011112222");
+        put("2","ddd02@daum.net", "서울시","01022223333");
+        put("3","ddd03@daum.net", "서울시","01033334444");
+        put("4","ddd04@daum.net", "서울시","01044445555");
+        put("5","ddd05@daum.net", "서울시","01055556666");
+        put("6","ddd06@daum.net", "서울시","01066667777");
+        put("7","ddd07@daum.net", "서울시","01077778888");
     }
 
-    public static User get(final Long id){
+    public static User get(final String id){
         return users.get(id);
     }
 
-    private static User put(final Long id,final String email, final String address, final String phoneNumber){
+    private static User put(final String id,final String email, final String address, final String phoneNumber){
 
         return users.put( id, new User( id, email, address, phoneNumber ));
     }
