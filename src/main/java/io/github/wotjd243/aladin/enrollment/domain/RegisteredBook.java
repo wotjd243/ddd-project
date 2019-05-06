@@ -1,8 +1,5 @@
-package io.github.wotjd243.aladin.registeredbook.domain;
+package io.github.wotjd243.aladin.enrollment.domain;
 
-import io.github.wotjd243.aladin.book.domain.Book;
-import io.github.wotjd243.aladin.enrollment.domain.Enrollment;
-import io.github.wotjd243.aladin.enrollment.domain.UnitAmount;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,15 +12,12 @@ public class RegisteredBook {
 
     private Long id;
 
-    private Book book;
-
-    private UnitAmount amount;
+    private Long bookId;
 
 
-    public RegisteredBook(Book book, UnitAmount amount) {
+    public RegisteredBook(Long bookId) {
         this.id = UUID.randomUUID().getMostSignificantBits();
-        this.book = book;
-        this.amount = amount;
+        this.bookId = bookId;
     }
 
     public boolean equalsBook(RegisteredBook registeredBook) {
