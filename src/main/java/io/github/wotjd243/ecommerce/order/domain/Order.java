@@ -1,36 +1,44 @@
 package io.github.wotjd243.ecommerce.order.domain;
 
-import io.github.wotjd243.ecommerce.product.domain.Dollar;
-import io.github.wotjd243.ecommerce.product.domain.Item;
-import io.github.wotjd243.ecommerce.user.domain.User;
+import io.github.wotjd243.ecommerce.order.application.dto.OrderResponseDto;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Order {
+    private String id;
+    private LocalDateTime createdDate;
+    private Buyer buyer;
+    private PayMethod payMethod;
+    private ShoppingBasket basket;
 
-    private Date orderDate;
-    private String orderId;
-    private User user;
-    private Paymethod paymethod;
-    private List<Item> itemList;
-    private double totalPrice;
-
-    public Order(String orderId, User user, Paymethod paymethod, List<Item> itemList) {
-        this.orderId = orderId;
-        this.user = user;
-        this.paymethod = paymethod;
-        this.itemList = itemList;
-        computeTotalPrice(itemList);
+    public Order(Buyer buyer, PayMethod payMethod, ShoppingBasket basket) {
+        this.id = UUID.randomUUID().toString();
+        this.buyer = buyer;
+        this.payMethod = payMethod;
+        this.basket = basket;
     }
 
-    private void computeTotalPrice(List<Item> items) {
-
-        for (Item item: items) {
-            this.totalPrice = Double.sum(item.price(), this.totalPrice);
-        }
+    public OrderResponseDto toDto() {
+        return new OrderResponseDto(
+                id,
+                buyer.getUserId(),
+                buyer.getAddress(),
+                basket.getItemsName(),
+                basket.sumPrice()
+        );
     }
 
+    public boolean isOwn(Buyer buyer) {
+        return this.buyer == buyer;
+    }
 
+    public boolean match(String orderId) {
+        return this.id == orderId;
+    }
+
+    public enum PayMethod {
+        CARD,
+        PHONE
+    }
 }

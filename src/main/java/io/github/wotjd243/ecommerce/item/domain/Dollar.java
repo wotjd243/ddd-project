@@ -1,4 +1,4 @@
-package io.github.wotjd243.ecommerce.product.domain;
+package io.github.wotjd243.ecommerce.item.domain;
 
 public class Dollar {
     private double price;
@@ -11,11 +11,11 @@ public class Dollar {
         this.price = price;
     }
 
-    public double castToDouble() {
+    public double getPrice() {
         return this.price;
     }
 
-    public boolean equals(double price) {
-        return Double.compare(price, this.price) == 0;
+    public Double multiple(int quantity) {
+        return price * quantity;
     }
 }

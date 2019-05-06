@@ -1,4 +1,4 @@
-package io.github.wotjd243.ecommerce.product.domain;
+package io.github.wotjd243.ecommerce.item.domain;
 
 import org.junit.Test;
 

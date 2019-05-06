@@ -16,4 +16,8 @@ public class QueryKeyword {
             throw new IllegalArgumentException("Keyword length must be at least " + MIN_KEYWORD_LENGTH);
         }
     }
+
+    public boolean match(String title) {
+        return title.contains(keyword);
+    }
 }

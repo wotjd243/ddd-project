@@ -1,28 +1,24 @@
 package io.github.wotjd243.ecommerce.user.domain;
 
-import io.github.wotjd243.ecommerce.product.domain.Item;
-import io.github.wotjd243.ecommerce.product.domain.Product;
-
-import java.util.List;
+import io.github.wotjd243.ecommerce.user.application.dto.UserResponseDto;
 
 public class User {
-
-    private String id;
-
+    private Long id;
+    private final String userId;
     private String address;
 
     private ShippingAddresses shippingAddresses;
 
-    public User(String id, String address) {
-        this.id = id;
+    public User(String userId, String address) {
+        this.userId = userId;
         this.address = address;
     }
 
-    public void registerGoods(Product product, Item item) {
-        product.register(item);
+    public UserResponseDto toDto(){
+        return new UserResponseDto(userId);
     }
 
-    public List<Item> retrieve(Product product) {
-        return product.getItems();
+    public boolean match(String userId) {
+        return this.userId == userId;
     }
 }
