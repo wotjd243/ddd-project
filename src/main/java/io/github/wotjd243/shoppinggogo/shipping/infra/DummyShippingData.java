@@ -1,8 +1,5 @@
 package io.github.wotjd243.shoppinggogo.shipping.infra;
 
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralBusinessNumber;
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralEmail;
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralPhoneNumber;
 import io.github.wotjd243.shoppinggogo.shipping.domain.*;
 import io.github.wotjd243.shoppinggogo.utils.ShippingStatus;
 import io.github.wotjd243.shoppinggogo.seller.domain.Seller;

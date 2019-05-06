@@ -1,9 +1,9 @@
 package io.github.wotjd243.shoppinggogo.seller.infra;
-
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralBusinessNumber;
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralEmail;
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralPhoneNumber;
+z
 import io.github.wotjd243.shoppinggogo.seller.domain.Seller;
+import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralBusinessNumber;
+import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralEmail;
+import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralPhoneNumber;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ public class DummySellerData {
     private static final Map<String,Seller> sellers = new HashMap<String, Seller>();
 
     static {
-        put("1", "개밥왕","양지한", GeneralPhoneNumber.valueOf("010-1111-2222"),GeneralEmail.valueOf("ddd01@daum.net"),
+        put("1", "개밥왕","양지한", GeneralPhoneNumber.valueOf("010-1111-2222"), GeneralEmail.valueOf("ddd01@daum.net"),
                 GeneralBusinessNumber.valueOf("333-22-1111"),"경기도 성남시 분당구 탄천로 94");
     }
 
