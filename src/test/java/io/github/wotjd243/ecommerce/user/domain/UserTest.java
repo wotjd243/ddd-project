@@ -13,9 +13,10 @@ public class UserTest {
     private final static String TEST_USER_ID = "TEST_USER";
     private final static String TEST_ANOTHER_ID = "TEST_ANTHER";
     private final static String TEST_PRODUCT_NAME = "TEST_PRODUCT";
+    private final static String TEST_ADDRESS = "TEST_ADDRESS";
 
-    User user = new User(TEST_USER_ID);
-    User anotherSeller = new User(TEST_ANOTHER_ID);
+    User user = new User(TEST_USER_ID, TEST_ADDRESS);
+    User anotherSeller = new User(TEST_ANOTHER_ID, TEST_ADDRESS);
     Product product = new Product(TEST_PRODUCT_NAME);
 
     @Test

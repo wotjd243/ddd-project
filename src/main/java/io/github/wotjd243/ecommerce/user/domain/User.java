@@ -6,11 +6,16 @@ import io.github.wotjd243.ecommerce.product.domain.Product;
 import java.util.List;
 
 public class User {
-    private String id;
-    private List<String> orderList;
 
-    public User(String id) {
+    private String id;
+
+    private String address;
+
+    private ShippingAddresses shippingAddresses;
+
+    public User(String id, String address) {
         this.id = id;
+        this.address = address;
     }
 
     public void registerGoods(Product product, Item item) {
