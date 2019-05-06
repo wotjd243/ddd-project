@@ -1,6 +1,7 @@
-package io.github.book.domain.book;
+package io.github.book.domain.rent.domain;
 
-import io.github.book.domain.user.User;
+import io.github.book.domain.book.domain.Book;
+import io.github.book.domain.user.domain.User;
 import lombok.Builder;
 
 import javax.persistence.*;

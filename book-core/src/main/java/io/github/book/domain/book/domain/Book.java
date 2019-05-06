@@ -1,5 +1,7 @@
-package io.github.book.domain.book;
+package io.github.book.domain.book.domain;
 
+import io.github.book.domain.rent.domain.BookRentHistory;
+import io.github.book.domain.book.CollectedBook;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

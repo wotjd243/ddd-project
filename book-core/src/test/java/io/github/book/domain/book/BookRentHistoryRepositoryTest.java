@@ -1,10 +1,9 @@
 package io.github.book.domain.book;
 
 
+import io.github.book.domain.rent.infra.BookRentHistoryRepository;
 import lombok.AllArgsConstructor;
-import lombok.val;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 

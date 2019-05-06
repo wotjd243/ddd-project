@@ -1,5 +1,7 @@
 package io.github.book.domain.book;
 
+import io.github.book.domain.book.domain.Book;
+import io.github.book.domain.book.infra.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
