@@ -1,5 +1,5 @@
 package io.github.wotjd243.shoppinggogo.seller.infra;
-z
+
 import io.github.wotjd243.shoppinggogo.seller.domain.Seller;
 import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralBusinessNumber;
 import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralEmail;

@@ -43,6 +43,7 @@ public class PaymentService {
         }
 
 //        orderService.getTotalAmount();
+        // orderService의 totalAmount을 사용
         payment.pay(userService, sellerService, Amount.valueOf(1111));
 
         this.paymentRepository.save(new Date(), UUID.randomUUID().toString(), orderId, Amount.valueOf(111), userId );
