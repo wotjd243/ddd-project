@@ -21,33 +21,25 @@ public class DummayProductsData {
                 price1s,
                 new Date(), new Date());
 
+        List<PriceRecord> price2s = new ArrayList<>();
+        price2s.add(new PriceRecord(1L, 100, 300, 200,
+                new Date(), new Date()));
+        put(    2L, "포켓몬스터",  new Category("강의", "프로그래밍"),
+                new ProductImage(2000L, 2L, "/pocket", "monster.jpg", new Date()),
+                price2s,
+                new Date(), new Date());
     }
-
-    private long id;
-    private long productId; //제품 아이디
-    private String imageLink; //이미지 링크
-    private String imageFile; //이미지 파일
-    private Date modifyDate; //수정된 날짜
-
 
     public static Product get(final Long id) {
         return products.get(id);
     }
-
-/*
-    private String id; //상품 ID
-    private String name; //상품 명
-    private List<PriceRecord> prices;
-    private ProductImage productImage; //제품 이미지
-    private Date createDate; // 생성 날짜
-    private Date updateDate; //수정된 날짜
-    private Category category; //상품 카테고리*/
 
     public static Product put(final long id, final String name,
                               final Category category,
                               final ProductImage productImage,
                               final List<PriceRecord> prices,
                               final Date createDate, final Date updateDate) {
-        return products.put(id, new Product(id, name, category, productImage, prices, createDate, updateDate));
+        return products.put(id, new Product(id, name, category, productImage,
+                prices, createDate, updateDate));
     }
 }

@@ -1,5 +1,6 @@
 package io.github.wotjd243.shoppinggogo.order.domain;
 
+import io.github.wotjd243.shoppinggogo.cart.domain.Cart;
 import io.github.wotjd243.shoppinggogo.user.domain.Address;
 
 //유저 장바구니 목록에 있는 것을 종합하여 주문한다.

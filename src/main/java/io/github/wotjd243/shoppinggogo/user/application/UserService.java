@@ -19,8 +19,7 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(IllegalAccessError::new);
     }
 
-    public Boolean isSingInUser(final Long id){
-
+    public Boolean isUserLoggedIn(final Long id){
         Optional<User> user = userRepository.findById(id);
         if( !user.isPresent()) {
             return false;
