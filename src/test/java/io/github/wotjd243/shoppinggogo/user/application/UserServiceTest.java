@@ -28,7 +28,7 @@ public class UserServiceTest {
     }
     @Test
     public void 회원가입했는지확인(){
-        Boolean isSignIn = userService.isSingInUser(10L);
+        userService.isUserLoggedIn(10L);
     }
 
 }
