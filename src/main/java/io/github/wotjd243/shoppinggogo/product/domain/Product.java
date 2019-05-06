@@ -1,6 +1,7 @@
 package io.github.wotjd243.shoppinggogo.product.domain;
 
 
+import lombok.Data;
 import lombok.Getter;
 
 import java.util.Comparator;
@@ -8,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-
+@Data
 public class Product {
     @Getter
     private Long id; //상품 ID
@@ -28,11 +29,6 @@ public class Product {
         this.prices = prices;
         this.createDate = createDate;
         this.updateDate = updateDate;
-    }
-
-
-    public Long getId() {
-        return id;
     }
 
     /**

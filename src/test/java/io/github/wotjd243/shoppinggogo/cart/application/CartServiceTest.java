@@ -1,6 +1,5 @@
 package io.github.wotjd243.shoppinggogo.cart.application;
 
-import io.github.wotjd243.shoppinggogo.cart.domain.Cart;
 import io.github.wotjd243.shoppinggogo.cart.infra.CartRepository;
 import io.github.wotjd243.shoppinggogo.product.domain.Category;
 import io.github.wotjd243.shoppinggogo.product.domain.PriceRecord;
@@ -51,7 +50,6 @@ public class CartServiceTest {
                 .willReturn(product1s);
 
         final List<Product> results = cartService.findProductsToCart("test");
-
         List<Long> s = results.stream().map(product -> product.getId())
                 .collect(Collectors.toList());
         assertThat(s)
