@@ -1,8 +1,5 @@
 package io.github.wotjd243.shoppinggogo.user.domain;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-
-import javax.xml.bind.ValidationException;
 import java.util.regex.Pattern;
 
 

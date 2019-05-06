@@ -1,7 +1,7 @@
 package io.github.wotjd243.shoppinggogo.user.application;
 
 import io.github.wotjd243.shoppinggogo.user.domain.User;
-import io.github.wotjd243.shoppinggogo.user.domain.UserRepository;
+import io.github.wotjd243.shoppinggogo.user.infra.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

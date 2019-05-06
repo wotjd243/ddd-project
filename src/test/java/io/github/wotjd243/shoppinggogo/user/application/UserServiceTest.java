@@ -1,6 +1,7 @@
 package io.github.wotjd243.shoppinggogo.user.application;
 
 import io.github.wotjd243.shoppinggogo.user.domain.*;
+import io.github.wotjd243.shoppinggogo.user.infra.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -8,9 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Optional;
-
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
