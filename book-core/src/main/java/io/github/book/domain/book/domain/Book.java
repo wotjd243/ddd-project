@@ -1,27 +1,25 @@
 package io.github.book.domain.book.domain;
 
-import io.github.book.domain.history.domain.BookRentHistory;
-import io.github.book.domain.book.CollectedBook;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
-
 @Getter
-@ToString
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@Table(name = "book",
+        indexes = {
+                @Index(columnList = "book_isbn", name = "IDX_BOOK_ISBN"),
+                @Index(columnList = "book_title", name = "IDX_BOOK_TITLE")
+        }
+)
 public class Book {
     @Id
-    @Column(nullable = false, unique = true)
+    @Column(name = "book_isbn", nullable = false, unique = true)
     private Long isbn;
 
-    @Column(nullable = false)
+    @Column(name = "book_title", nullable = false)
     private String title;
 
     @Column(nullable = false)
@@ -32,23 +30,6 @@ public class Book {
 
     @Column(nullable = false)
     private LocalDate publishedDate;
-
-    @Column(nullable = false, columnDefinition = "bit default 0")
-    private boolean isRent;
-
-    @OneToMany(mappedBy = "book")
-    private Set<BookRentHistory> bookRentHistories;
-
-    @OneToOne(mappedBy = "book")
-    private CollectedBook collectedBook;
-
-    public void rent() {
-        this.isRent = true;
-    }
-
-    public void returned() {
-        this.isRent = false;
-    }
 
     @Builder
     public Book(Long isbn, String title, String author, String description, LocalDate publishedDate) {
