@@ -49,4 +49,8 @@ public class Book {
         this.description = description;
         this.publishedDate = publishedDate;
     }
+
+    public boolean isContainsTitle(String title){
+        return this.title.contains(title);
+    }
 }

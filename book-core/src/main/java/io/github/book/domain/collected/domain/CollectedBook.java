@@ -47,7 +47,7 @@ public class CollectedBook {
     }
 
     @Builder
-    public CollectedBook(String bookIsbn, boolean isRent, BookLocation bookLocation) {
+    public CollectedBook(String bookIsbn, BookLocation bookLocation) {
         this.bookIsbn = bookIsbn;
         this.bookLocation = bookLocation;
     }
