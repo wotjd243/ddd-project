@@ -1,12 +1,18 @@
 package io.github.book.domain.user.domain;
 
 import io.github.book.domain.collected.domain.CollectedBook;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class User {
     @Id
     @GeneratedValue
@@ -28,4 +34,13 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Set<CollectedBook> collectedBooks;
+
+    @Builder
+    public User(Long id, String name, Account account, String phoneNumber, LocalDate birthDay) {
+        this.id = id;
+        this.name = name;
+        this.account = account;
+        this.phoneNumber = phoneNumber;
+        this.birthDay = birthDay;
+    }
 }

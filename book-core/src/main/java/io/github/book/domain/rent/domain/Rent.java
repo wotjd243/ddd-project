@@ -1,12 +1,20 @@
 package io.github.book.domain.rent.domain;
 
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity
-@Builder
+@Getter
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class Rent {
     @Id
     @GeneratedValue
@@ -15,7 +23,7 @@ public class Rent {
     @Column(nullable = false)
     private LocalDateTime rentStartDatetime;
 
-    @Column(nullable = false)
+    @Column
     private LocalDateTime returnDatetime;
 
     @Column(nullable = false)
@@ -26,4 +34,12 @@ public class Rent {
 
     @Column(nullable = false)
     private Long collectedBookId;
+
+    @Builder
+    public Rent(Long userId, Long collectedBookId) {
+        this.rentStartDatetime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+        this.returnDeadLine = rentStartDatetime.plusWeeks(2L);
+        this.userId = userId;
+        this.collectedBookId = collectedBookId;
+    }
 }
