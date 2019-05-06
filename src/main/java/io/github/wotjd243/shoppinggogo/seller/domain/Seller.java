@@ -1,5 +1,9 @@
 package io.github.wotjd243.shoppinggogo.seller.domain;
 
+import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralBusinessNumber;
+import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralEmail;
+import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralPhoneNumber;
+
 public class Seller {
 
     private String id;
