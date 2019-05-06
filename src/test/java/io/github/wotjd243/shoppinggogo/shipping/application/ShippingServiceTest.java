@@ -1,7 +1,7 @@
 package io.github.wotjd243.shoppinggogo.shipping.application;
 
 import io.github.wotjd243.shoppinggogo.shipping.domain.*;
-import io.github.wotjd243.shoppinggogo.shipping.infra.ShippingRepository;
+import io.github.wotjd243.shoppinggogo.shipping.infra.ShippingRepositoryImpl;
 import io.github.wotjd243.shoppinggogo.user.domain.Seller;
 import io.github.wotjd243.shoppinggogo.utils.ShippingStatus;
 import org.junit.Test;
@@ -21,7 +21,7 @@ import static org.mockito.BDDMockito.given;
 public class ShippingServiceTest {
 
     @Mock
-    private ShippingRepository shippingRepository;
+    private ShippingRepositoryImpl shippingRepository;
 
     @InjectMocks
     private ShippingService shippingService;
