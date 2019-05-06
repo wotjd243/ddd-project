@@ -8,7 +8,6 @@ import java.util.Date;
 public class Shipping implements Serializable {
     // 배송번호
     private String id;
-    private String mall;
     // 배송상태( 물건준비중, 집하, 배송중(입고),  배달중, 배달완료 )
     private String shippingStatus;
     // 물건 리스트,주소,배송비( 주문에서 가져옴 될듯 ? )
@@ -22,24 +21,16 @@ public class Shipping implements Serializable {
     private Invoice Invoice;
     // 판매자 ( 개밥왕, 연락처 )
     private Seller seller;
-    private String destination;
 
-
-    public Shipping( String id, String mall, String shippingStatus, String orderId, String position, Date processedDate,
-                    Invoice invoice, Seller seller, String destination) {
+    public Shipping( String id, String shippingStatus, String orderId, String position, Date processedDate,
+                    Invoice invoice, Seller seller) {
         this.id = id;
-        this.mall = mall;
         this.shippingStatus = shippingStatus;
         this.orderId = orderId;
         this.position = position;
         this.ProcessedDate = processedDate;
         this.Invoice = invoice;
         this.seller = seller;
-        this.destination = destination;
-    }
-
-    public String getMall() {
-        return mall;
     }
 
     public String getId() {
@@ -48,10 +39,6 @@ public class Shipping implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setMall(String mall) {
-        this.mall = mall;
     }
 
     public String getOrderId() {
@@ -100,13 +87,5 @@ public class Shipping implements Serializable {
 
     public void setSeller(Seller seller) {
         this.seller = seller;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 }
