@@ -14,11 +14,7 @@ public class Phone {
 
     private void validate(String phoneNumber){
         boolean validation = Pattern.matches(phoneRegex,phoneNumber);
-        if( validation==false) try {
-            throw new ValidationException("not match format");
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
+        if( validation==false) throw new IllegalArgumentException();
 
     }
 }

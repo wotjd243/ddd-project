@@ -18,7 +18,7 @@ public class Email {
     }
     public void validate(String email) {
         boolean emailValidation = Pattern.matches(emailPattern,email);
-        if(emailValidation==false) throw new RuntimeException("runtime Exception");
+        if(emailValidation==false) throw new IllegalArgumentException();
     }
 
 }
