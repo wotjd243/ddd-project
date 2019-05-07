@@ -10,5 +10,6 @@ data class ItemResponseDto(
         val title: String,
         val price: Double,
         val url: String,
+        val stock: Int,
         val state: String
 )

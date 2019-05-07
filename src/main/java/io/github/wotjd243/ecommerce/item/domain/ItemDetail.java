@@ -4,8 +4,7 @@ import io.github.wotjd243.ecommerce.item.domain.search.QueryKeyword;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-//TODO: to kotlin
-//TODO: orderingItems
+
 public class ItemDetail {
     private String title;
     private Dollar price;
