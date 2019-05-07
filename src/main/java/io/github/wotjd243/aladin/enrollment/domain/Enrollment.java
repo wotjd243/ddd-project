@@ -47,7 +47,5 @@ public class Enrollment {
 
     private void addRegisteredBook(RegisteredBook registeredBook) {
         registeredBooks.add(registeredBook);
-
-        registeredBook.setEnrollment(this);
     }
 }
