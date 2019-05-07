@@ -1,7 +1,6 @@
 package io.github.wotjd243.aladin.book.domain;
 
 import io.github.wotjd243.aladin.common.Name;
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
