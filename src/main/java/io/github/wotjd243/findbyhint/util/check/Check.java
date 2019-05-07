@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
-@Service
+//@Service
 public class Check {
 
     private Check() {

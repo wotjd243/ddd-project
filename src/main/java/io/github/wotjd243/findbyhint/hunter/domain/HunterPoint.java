@@ -20,5 +20,24 @@ public class HunterPoint {
 
     }
 
+    public boolean hunterPointCheck() {
+        if (hunterPoint > 100) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public HunterPoint hunterPointMinus(int minus) {
+        hunterPoint = hunterPoint - minus;
+        return new HunterPoint(hunterPoint);
+    }
+
+
+    public HunterPoint hunterPointPlus(int plus) {
+        hunterPoint = hunterPoint + plus;
+        return new HunterPoint(hunterPoint);
+    }
+
 
 }
