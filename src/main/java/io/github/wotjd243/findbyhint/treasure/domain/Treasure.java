@@ -33,29 +33,29 @@ public class Treasure {
     public Treasure(String treasureName,
                     String runningStatus, QRCodeVO qrCodeVO,
                     List<TargetPoint> targetPointList,
-                    final LocalDate startDate, final LocalDate endDate,
+                    RunningTime runningTime,
                     final List<Mission> missionList) {
-        validation(treasureName,runningStatus,targetPointList,missionList);
+        validation(treasureName,runningStatus,targetPointList,runningTime,missionList);
         this.treasureId = UUID.randomUUID().getMostSignificantBits();
         this.treasureName= treasureName;
         this.runningStatus = runningStatus;
         this.qrCodeVO = qrCodeVO;
         this.targetPointList= targetPointList;
-        this.runningTime = RunningTime.valueOfStartDateAndEndDate(startDate,endDate);
+        this.runningTime = runningTime;
         this.missionList = missionList;
     }
 
     public static Treasure valueOf(String treasureName, QRCodeVO qrCodeVO,
                                    String runningStatus,
                                    List<TargetPoint> targetPointList,
-                                   final LocalDate startDate,final LocalDate endDate,
+                                   RunningTime runningTime,
                                    List<Mission> missionList){
-        return new Treasure(treasureName,runningStatus,qrCodeVO,targetPointList,startDate,endDate,missionList);
+        return new Treasure(treasureName,runningStatus,qrCodeVO,targetPointList,runningTime,missionList);
     }
 
-    public void validation(String name, String runningStatus,  List<TargetPoint> targetPointList, List<Mission> missionList ){
-        if(missionList.isEmpty()|| StringUtils.isEmpty(name)|| StringUtils.isEmpty(runningStatus) || targetPointList.isEmpty()) {
-            new IllegalArgumentException("Treasure 에서 예외 발생");
+    public void validation(String name, String runningStatus,  List<TargetPoint> targetPointList,RunningTime runningTime, List<Mission> missionList ){
+        if(missionList.isEmpty()|| StringUtils.isEmpty(name)|| StringUtils.isEmpty(runningStatus) || targetPointList.isEmpty() || runningTime == null) {
+            new IllegalArgumentException("Treasure Exception !!!");
         }
     }
 

@@ -14,13 +14,22 @@ repositories {
 }
 
 dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+
     // Spring and Spring Boot dependencies
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
+<<<<<<< HEAD
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+=======
+
+>>>>>>> ef21982818b32250d0f98ae0e08c9fdaa81d2658
     // webjars
     implementation 'org.webjars:webjars-locator:0.36'
     implementation 'org.webjars:jquery:3.4.0'

@@ -9,6 +9,8 @@ import java.util.function.DoubleUnaryOperator;
 
 public class TargetPoint {
 
+    private Long targetPointId;
+
     /*실제 보물의 위치*/
     //위도
     private final Double latitude;
@@ -35,8 +37,8 @@ public class TargetPoint {
     //nullCHeck
     public void validation(final Double latitude,final Double hardness,final String distinguish){
 
-        if( latitude == null || hardness ==null || StringUtils.isEmpty(distinguish)){
-            throw new IllegalArgumentException("TargetPoint 지점에서 발생");
+        if(latitude == null || hardness ==null || StringUtils.isEmpty(distinguish)){
+            throw new IllegalArgumentException("TargetPoint Exception !!!");
         }else if (latitude < 33 || latitude > 43 ||  hardness < 124 || hardness > 132){
             throw new IllegalArgumentException("경도와 위도범위가 맞지 않음 " + "경도 (hardness) :" + hardness + "위도(latitude) : "+latitude);
         }
