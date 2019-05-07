@@ -1,5 +1,6 @@
 package io.github.wotjd243.aladin.reservation.application;
 
+import io.github.wotjd243.aladin.enrollment.domain.EnrollmentRepository;
 import io.github.wotjd243.aladin.enrollment.domain.RegisteredBook;
 import io.github.wotjd243.aladin.exception.MaxOverReservationException;
 import io.github.wotjd243.aladin.reservation.domain.Reservation;
@@ -13,6 +14,7 @@ public class ReservationService {
 
     public static final int LIMIT_RESERVATION_COUNT = 15;
     private final ReservationRepository reservationRepository;
+    private final EnrollmentRepository enrollmentRepository;
 
     public void add(Long buyerId, Long registeredBookId) {
 

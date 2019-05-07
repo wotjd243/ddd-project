@@ -1,4 +1,4 @@
-package io.github.wotjd243.aladin.common;
+package io.github.wotjd243.aladin.common.domain;
 
 import io.github.wotjd243.aladin.common.domain.Name;
 import io.github.wotjd243.aladin.exception.NotFoundException;
