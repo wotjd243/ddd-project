@@ -48,7 +48,7 @@ public class Hunter {
         if (hunterPoint.hunterPointCheck()) {
             hunterPoint.hunterPointMinus(100);
             increaseOneBullet();
-        }else{
+        } else {
             throw new IllegalStateException();
         }
     }
