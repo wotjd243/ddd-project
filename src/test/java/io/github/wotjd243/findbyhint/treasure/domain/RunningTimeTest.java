@@ -1,5 +1,6 @@
 package io.github.wotjd243.findbyhint.treasure.domain;
 
+import io.github.wotjd243.findbyhint.util.check.DateObject;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -84,7 +85,7 @@ public class RunningTimeTest {
 
         // when
         RunningTime runningTime = RunningTime.valueOfStartDateAndEndDate(startDate,endDate);
-        int countByRunningRangeDays = runningTime.getCountByRunningRangeDays();
+        int countByRunningRangeDays = runningTime.getMissionCountByRunningRangeDays();
 
         assertThat(countByRunningRangeDays).isEqualTo(expectedCount);
     }

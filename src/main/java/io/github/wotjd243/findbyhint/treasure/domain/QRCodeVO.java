@@ -16,6 +16,7 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+
 public class QRCodeVO {
 
     private String qrUrl;

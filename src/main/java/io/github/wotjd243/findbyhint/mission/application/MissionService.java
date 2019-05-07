@@ -23,7 +23,6 @@ public class MissionService {
     private Mission getMission(final String level) {
         return missionRepository.findById(MissionLevel.valueOf(level))
                 .orElseThrow(IllegalArgumentException::new);
-
     }
 
 }
