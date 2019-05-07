@@ -11,7 +11,7 @@ public class TargetPointTest {
     @Test
     public void 보물지점생성_정상(){
         // given
-        TargetPoint.valueOfIatitudeAndHardness("37.4954676","126.9941658");
+        TargetPoint.valueOfIatitudeAndHardness(37.4954676,126.9941658,"1");
 
         // when
 
@@ -22,11 +22,12 @@ public class TargetPointTest {
     @Test(expected = IllegalArgumentException.class)
     public void 보물지점생성_위도가없을때(){
         // given
-        String latitude = null;
-        String hardness = "37.4954676";
+        Double latitude = null;
+        Double hardness = 37.4954676;
+        String distinguish = "1";
 
         // when
-        TargetPoint.valueOfIatitudeAndHardness(latitude,hardness);
+        TargetPoint.valueOfIatitudeAndHardness(latitude,hardness,distinguish);
 
         // then
 
@@ -35,11 +36,11 @@ public class TargetPointTest {
     @Test(expected = IllegalArgumentException.class)
     public void 보물지점생성_경도가없을때(){
         // given
-        String latitude = "37.4954676";
-        String hardness = null;
-
+        Double latitude = 37.4954676;
+        Double hardness = null;
+        String distinguish = "1";
         // when
-        TargetPoint.valueOfIatitudeAndHardness(latitude,hardness);
+        TargetPoint.valueOfIatitudeAndHardness(latitude,hardness,distinguish);
 
         // then
     }
