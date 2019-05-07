@@ -6,16 +6,14 @@ public class HunterName {
 
     private String hunterName;
 
-    Check check = new Check();
-
     public HunterName(String hunterName) {
         validation(hunterName);
         this.hunterName = hunterName;
     }
 
-    private void validation(String hunterName){
+    private void validation(String hunterName) {
 
-        check.lengthLimit(hunterName,15);
+        Check.lengthLimit(hunterName, 15);
 
     }
 }

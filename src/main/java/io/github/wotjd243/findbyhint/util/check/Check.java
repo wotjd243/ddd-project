@@ -1,13 +1,20 @@
 package io.github.wotjd243.findbyhint.util.check;
 
 
+import org.springframework.stereotype.Service;
+
 import java.util.regex.Pattern;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
+//@Service
 public class Check {
 
-    public void idpwCheck(String value) {
+    private Check() {
+        throw new AssertionError();
+    }
+
+    public static void idpwCheck(String value) {
 
         char chrInput;
         int length = value.length();
@@ -18,46 +25,46 @@ public class Check {
 
             if (chrInput >= 0x61 && chrInput <= 0x7A) {
                 // 영문(소문자) OK!
-            }else if (chrInput >=0x41 && chrInput <= 0x5A) {
+            } else if (chrInput >= 0x41 && chrInput <= 0x5A) {
                 // 영문(대문자) OK!
-            }else if (chrInput >= 0x30 && chrInput <= 0x39) {
+            } else if (chrInput >= 0x30 && chrInput <= 0x39) {
                 // 숫자 OK!
-            }else {
+            } else {
                 log.println("영소문자,대문자,숫자만 사용해서 아이디를 만들어야합니다.");
                 throw new IllegalArgumentException();
             }
         }
     }
 
-    public void lengthLimit(String value, int limit) {
+    public static void lengthLimit(String value, int limit) {
         // 길이수 제한
         int length = value.length();
 
-        if(length > limit){
-            log.println("길이수가 "+limit+"자를 초과합니다.");
+        if (length > limit) {
+            log.println("길이수가 " + limit + "자를 초과합니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    public void startEngCheck(String value) {
+    public static void startEngCheck(String value) {
         // 시작 글자 영문 소문자
-        String hunterId1 = value.substring(0,1);
-        if(!Pattern.matches("[a-z]" , hunterId1)){
+        String hunterId1 = value.substring(0, 1);
+        if (!Pattern.matches("[a-z]", hunterId1)) {
             log.println("첫글자가 영어가 아닙니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    public void numberLimit(int value,int limit){
+    public static void numberLimit(int value, int limit) {
 
-        if(value > limit){
-            log.println(value +" 값이 " + limit + "을 초과하였습니다.");
+        if (value > limit) {
+            log.println(value + " 값이 " + limit + "을 초과하였습니다.");
             throw new IllegalArgumentException();
         }
 
     }
 
-    public void imgCheck(String value){
+    public static void imgCheck(String value) {
 
         String originalNameExtension = value.substring(value.lastIndexOf(".") + 1).toLowerCase();
 
@@ -71,12 +78,12 @@ public class Check {
         }
     }
 
-    public void fileCheck(String value){
+    public static void fileCheck(String value) {
 
         String originalNameExtension = value.substring(value.lastIndexOf(".") + 1).toLowerCase();
 
         // 확장자 제한
-        if(((originalNameExtension.equals("html")) || (originalNameExtension.equals("php")) || (originalNameExtension.equals("exe")) || (originalNameExtension.equals("js")) || (originalNameExtension.equals("java")) || (originalNameExtension.equals("class")) )) {
+        if (((originalNameExtension.equals("html")) || (originalNameExtension.equals("php")) || (originalNameExtension.equals("exe")) || (originalNameExtension.equals("js")) || (originalNameExtension.equals("java")) || (originalNameExtension.equals("class")))) {
             log.println("업로드가 불가한 파일확장자 입니다.");
             throw new IllegalArgumentException();
         }
