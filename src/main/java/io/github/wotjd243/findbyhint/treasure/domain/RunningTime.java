@@ -1,9 +1,9 @@
 package io.github.wotjd243.findbyhint.treasure.domain;
 
+import io.github.wotjd243.findbyhint.util.check.DateObject;
+
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Collection;
-import java.util.HashMap;
 
 public class RunningTime {
 
@@ -36,9 +36,15 @@ public class RunningTime {
 
 
     //validation
+<<<<<<< HEAD
     private void validation(HashMap<String,LocalDate> valueMap){
         if(!(nullCheck(valueMap) && dateValidation(valueMap))){
             throw new IllegalArgumentException("RunningTime 에서 발생");
+=======
+    private void validation(final LocalDate startDate,final LocalDate endDate){
+        if(!(nullCheck(startDate,endDate) && dateValidation(startDate,endDate))){
+            throw new IllegalArgumentException("RunningTime Exception !!!");
+>>>>>>> afac6cd... *docs README 문서 수정
         }
     }
 
@@ -50,6 +56,7 @@ public class RunningTime {
         Boolean check = true;
         if(startDate == null || endDate == null){
             check = false;
+            throw new IllegalArgumentException("시작일자나 종료일자가 없습니다.");
         }
         return check;
     }
@@ -76,8 +83,9 @@ public class RunningTime {
         System.out.println("endDate 가 현재 날짜보다 이른다 " +endDate.isAfter(today.getDate()));
         System.out.println("endDate 가 startDate 보다 날짜보다 이른다 " +endDate.isAfter(startDate));
 
-        if(!(startDate.isAfter(today.getDate()) && endDate.isAfter(today.getDate())  && endDate.isAfter(startDate))){
+        if(!((startDate.isAfter(today.getDate()) || startDate.isEqual(today.getDate())) && endDate.isAfter(today.getDate())  && endDate.isAfter(startDate))){
             check =false;
+            throw new IllegalArgumentException("러닝 타임 validation 잘못 설정");
         }
 
         return check;
@@ -89,6 +97,7 @@ public class RunningTime {
     public int getRunningRangeDays(){
         //일수 차이
         Period runningRangePeriod = Period.between(this.startDate,this.endDate);
+        //설명변수
         int runningRangeDays = runningRangePeriod.getDays();
         return runningRangeDays;
     }
@@ -96,10 +105,16 @@ public class RunningTime {
 
     //러닝타임의 따라 풀어야 하는 미션의 개수
     // 공식 :  1주일에 개의 문제  7일당 5문제
-    public int getCountByRunningRangeDays(){
+    public int getMissionCountByRunningRangeDays(){
         int runningRangeDays = getRunningRangeDays();
+<<<<<<< HEAD
         int countByRunningRangeDays  = runningRangeDays  - runningRangeDays/7 * 2;
         return countByRunningRangeDays;
+=======
+        //설명변수
+        int missionCount = runningRangeDays  - runningRangeDays/7 * 2;
+        return missionCount;
+>>>>>>> afac6cd... *docs README 문서 수정
     }
 
     public String runningTimeInfo() {

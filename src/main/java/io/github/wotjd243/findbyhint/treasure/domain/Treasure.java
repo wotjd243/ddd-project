@@ -25,6 +25,7 @@ public class Treasure {
 
     private RunningTime runningTime;
 
+<<<<<<< HEAD
 
     private Treasure(Long id, String name, String qrCode, String runningStatus,final String latitude,final String hardness,
                      final LocalDate startDate,final LocalDate endDate) {
@@ -47,6 +48,39 @@ public class Treasure {
     public void validation(Long id, String name, String qrCode, String runningStatus){
         if(id == null || StringUtils.isEmpty(name)|| StringUtils.isEmpty(qrCode)|| StringUtils.isEmpty(runningStatus)){
             new IllegalArgumentException("Treasure 에서 예외 발생");
+=======
+    //보물로 접근할 수 있는 QR코드
+    private QRCodeVO qrCodeVO;
+
+    private List<Mission> missionList;
+
+    public Treasure(String treasureName,
+                    String runningStatus, QRCodeVO qrCodeVO,
+                    List<TargetPoint> targetPointList,
+                    RunningTime runningTime,
+                    final List<Mission> missionList) {
+        validation(treasureName,runningStatus,targetPointList,runningTime,missionList);
+        this.treasureId = UUID.randomUUID().getMostSignificantBits();
+        this.treasureName= treasureName;
+        this.runningStatus = runningStatus;
+        this.qrCodeVO = qrCodeVO;
+        this.targetPointList= targetPointList;
+        this.runningTime = runningTime;
+        this.missionList = missionList;
+    }
+
+    public static Treasure valueOf(String treasureName, QRCodeVO qrCodeVO,
+                                   String runningStatus,
+                                   List<TargetPoint> targetPointList,
+                                   RunningTime runningTime,
+                                   List<Mission> missionList){
+        return new Treasure(treasureName,runningStatus,qrCodeVO,targetPointList,runningTime,missionList);
+    }
+
+    public void validation(String name, String runningStatus,  List<TargetPoint> targetPointList,RunningTime runningTime, List<Mission> missionList ){
+        if(missionList.isEmpty()|| StringUtils.isEmpty(name)|| StringUtils.isEmpty(runningStatus) || targetPointList.isEmpty() || runningTime == null) {
+            new IllegalArgumentException("Treasure Exception !!!");
+>>>>>>> afac6cd... *docs README 문서 수정
         }
     }
     public String TreasureInfo() {
