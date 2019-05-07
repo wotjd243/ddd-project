@@ -1,8 +1,8 @@
 package io.github.wotjd243.aladin.seller.domain;
 
-import io.github.wotjd243.aladin.common.Email;
-import io.github.wotjd243.aladin.common.Name;
-import io.github.wotjd243.aladin.common.PhoneNumber;
+import io.github.wotjd243.aladin.common.domain.Email;
+import io.github.wotjd243.aladin.common.domain.Name;
+import io.github.wotjd243.aladin.common.domain.PhoneNumber;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

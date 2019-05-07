@@ -1,8 +1,10 @@
 package io.github.wotjd243.aladin.exception;
 
-public class NotFoundException extends RuntimeException {
+import io.github.wotjd243.aladin.error.ErrorCode;
+
+public class NotFoundException extends BusinessException {
 
     public NotFoundException(String message) {
-        super(message);
+        super(ErrorCode.ENTITY_NOT_FOUND, message);
     }
 }

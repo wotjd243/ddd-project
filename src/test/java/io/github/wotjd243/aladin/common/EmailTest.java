@@ -1,5 +1,6 @@
 package io.github.wotjd243.aladin.common;
 
+import io.github.wotjd243.aladin.common.domain.Email;
 import io.github.wotjd243.aladin.exception.NotFoundException;
 import io.github.wotjd243.aladin.exception.WrongValueException;
 import org.junit.Test;
