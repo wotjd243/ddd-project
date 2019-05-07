@@ -1,7 +1,7 @@
 package io.github.wotjd243.aladin.reservation.application;
 
+import io.github.wotjd243.aladin.enrollment.domain.RegisteredBook;
 import io.github.wotjd243.aladin.exception.MaxOverReservationException;
-import io.github.wotjd243.aladin.registeredbook.domain.RegisteredBook;
 import io.github.wotjd243.aladin.reservation.domain.Reservation;
 import io.github.wotjd243.aladin.reservation.domain.ReservationRepository;
 import lombok.RequiredArgsConstructor;
