@@ -1,5 +1,6 @@
 package io.github.wotjd243.aladin.common;
 
+import io.github.wotjd243.aladin.common.domain.Name;
 import io.github.wotjd243.aladin.exception.NotFoundException;
 import org.junit.Test;
 
