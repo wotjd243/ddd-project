@@ -20,7 +20,7 @@ public class HunterPoint {
 
     }
 
-    public boolean hunterPointCheck() {
+    public boolean bulletBuyPointCheck() {
         if (hunterPoint > 100) {
             return true;
         } else {
@@ -39,5 +39,7 @@ public class HunterPoint {
         return new HunterPoint(hunterPoint);
     }
 
-
+    public int getHunterPoint() {
+        return hunterPoint;
+    }
 }
