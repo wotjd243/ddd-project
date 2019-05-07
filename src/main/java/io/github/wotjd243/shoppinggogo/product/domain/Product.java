@@ -9,9 +9,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@Data
+
 public class Product {
-    @Getter
     private Long id; //상품 ID
     private String name; //상품 명
     private Category category; //상품 카테고리
@@ -40,4 +39,7 @@ public class Product {
                 .orElseThrow(NoSuchElementException::new);
     }
 
+    public Long getId() {
+        return id;
+    }
 }

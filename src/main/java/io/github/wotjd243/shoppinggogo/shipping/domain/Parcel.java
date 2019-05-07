@@ -1,6 +1,9 @@
 package io.github.wotjd243.shoppinggogo.shipping.domain;
 
+import lombok.Getter;
+
 // 택배사
+@Getter
 public class Parcel {
 
     private String id;
@@ -13,28 +16,6 @@ public class Parcel {
         this.phoneNum = phoneNum;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
 }
 

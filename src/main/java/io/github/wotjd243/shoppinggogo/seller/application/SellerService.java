@@ -17,7 +17,7 @@ public class SellerService {
         this.sellerRepository = sellerRepository;
     }
 
-    public Optional<Seller> getSeller(final String sellerId) {
+    public Optional<Seller> getSeller(final Long sellerId) {
         return this.sellerRepository.findBySellerId(sellerId);
     }
 

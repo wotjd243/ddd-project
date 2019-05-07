@@ -1,8 +1,5 @@
 package io.github.wotjd243.shoppinggogo.shipping.application;
 
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralBusinessNumber;
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralEmail;
-import io.github.wotjd243.shoppinggogo.seller.domain.GeneralPhoneNumber;
 import io.github.wotjd243.shoppinggogo.shipping.domain.*;
 import io.github.wotjd243.shoppinggogo.shipping.infra.ShippingRepositoryImpl;
 import io.github.wotjd243.shoppinggogo.seller.domain.Seller;
@@ -34,9 +31,9 @@ public class ShippingServiceTest {
         given(shippingRepository.findByShppingId(any()))
                 .willReturn(
                         Optional.of(//String id, String shppingNum, String mall, String shippingStatus, String orderId, String position, Date processedDate, Invoice invoice, Seller seller
-                                new Shipping("1","123-1111-1111", "Aladin", ShippingStatus.SHIPPING_DONE.getValue(), "111-2323-4444", "분당점",
+                                new Shipping(1l,"123-1111-1111", "Aladin", ShippingStatus.SHIPPING_DONE.getValue(),
                                         new Date(), new Invoice("349827715741", new Parcel("1","대한통운","001-222-2222"),"000-333-1111"),
-                                        new Seller("1", "개밥왕", "양지한", GeneralPhoneNumber.valueOf("010-7795-1820"),
+                                        new Seller(1l, "개밥왕", "양지한", GeneralPhoneNumber.valueOf("010-7795-1820"),
                                                 GeneralEmail.valueOf("yangjeehan@naver.com"), GeneralBusinessNumber.valueOf("111-22-3333"), "서현점"))
                         )
                 );

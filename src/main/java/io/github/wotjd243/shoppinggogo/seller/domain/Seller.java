@@ -6,7 +6,7 @@ import io.github.wotjd243.shoppinggogo.shipping.domain.GeneralPhoneNumber;
 
 public class Seller {
 
-    private String id;
+    private Long id;
     private String brandName;
     private String president;
     private GeneralPhoneNumber phoneNum;
@@ -15,7 +15,7 @@ public class Seller {
     private String addresss;
 
 
-    public Seller(String id, String brandName, String president, GeneralPhoneNumber phoneNum, GeneralEmail email, GeneralBusinessNumber businessNum, String addresss) {
+    public Seller(Long id, String brandName, String president, GeneralPhoneNumber phoneNum, GeneralEmail email, GeneralBusinessNumber businessNum, String addresss) {
         this.id = id;
         this.brandName = brandName;
         this.president = president;
@@ -25,59 +25,4 @@ public class Seller {
         this.addresss = addresss;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getBrandName() {
-        return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
-    }
-
-    public String getPresident() {
-        return president;
-    }
-
-    public void setPresident(String president) {
-        this.president = president;
-    }
-
-    public GeneralPhoneNumber getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(GeneralPhoneNumber phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    public GeneralEmail getEmail() {
-        return email;
-    }
-
-    public void setEmail(GeneralEmail email) {
-        this.email = email;
-    }
-
-    public GeneralBusinessNumber getBusinessNum() {
-        return businessNum;
-    }
-
-    public void setBusinessNum(GeneralBusinessNumber businessNum) {
-        this.businessNum = businessNum;
-    }
-
-    public String getAddresss() {
-        return addresss;
-    }
-
-    public void setAddresss(String addresss) {
-        this.addresss = addresss;
-    }
 }

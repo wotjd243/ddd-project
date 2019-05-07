@@ -6,21 +6,20 @@ import java.util.ArrayList;
 
 public class CalculateProductsService {
 
-    private ArrayList<Product> products ;
+    private Order order;
 
-
-    public CalculateProductsService(ArrayList<Product> products) {
-        this.products = products;
+    public CalculateProductsService(Order order){
+        this.order=order;
     }
 
-    public int calcurateProductsPrice(){
-        //같은 상품몰이면 배송비는 무료
-
-        int totalPrice = 0;
-        products.forEach((product)->{
-            totalPrice += product.findLowestPrice();
-        });
-
-        return totalPrice;
-    }
+//    public int calcurateProductsPrice(Order order){
+//        //같은 상품몰이면 배송비는 무료
+//
+//        int totalPrice = 0;
+//        products.forEach((product)->{
+//            totalPrice += product.findLowestPrice();
+//        });
+//
+//        return totalPrice;
+//    }
 }

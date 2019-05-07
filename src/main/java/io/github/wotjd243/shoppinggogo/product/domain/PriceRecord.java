@@ -5,10 +5,9 @@ import lombok.Getter;
 
 import java.util.Date;
 
-@Data
+@Getter
 public class PriceRecord {
     private Long id; //ID
-    @Getter
     private Integer lowestPrice; //가장 낮은 가격
     private Integer highestPrice; //가장 높은 가격
     private Integer retailPrice; //소매가 가격
@@ -25,4 +24,11 @@ public class PriceRecord {
         this.updateDate = updateDate;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public Integer getLowestPrice() {
+        return lowestPrice;
+    }
 }

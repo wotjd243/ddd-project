@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 @Data
 public class Cart {
+    @Getter
     private Long id; //카트 키
     private String userId; //유저 키
     private List<Product> products; //제품 목록
@@ -48,5 +49,13 @@ public class Cart {
     public int getProductLowestPriceSumBySelectedProducts() {
         return matchByCheckedProductIds(checkedProductIds)
                 .stream().mapToInt(p -> p.findLowestPrice().getLowestPrice()).sum();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<Product> getProducts() {
+        return products;
     }
 }

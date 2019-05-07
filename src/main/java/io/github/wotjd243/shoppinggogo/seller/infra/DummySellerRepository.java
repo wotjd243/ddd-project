@@ -13,7 +13,7 @@ import java.util.Optional;
 public class DummySellerRepository implements SellerRepository {
 
     @Override
-    public Optional<Seller> findBySellerId(String sellerId) {
+    public Optional<Seller> findBySellerId(Long sellerId) {
         return Optional.ofNullable(DummySellerData.get(sellerId));
     }
 }
