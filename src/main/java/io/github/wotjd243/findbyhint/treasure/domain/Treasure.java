@@ -1,54 +1,30 @@
 package io.github.wotjd243.findbyhint.treasure.domain;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
+import io.github.wotjd243.findbyhint.mission.domain.Mission;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class Treasure {
 
     // TODO (2) 보물의 위치 : 위도 경도 VO로 만들기
     // TODO (3) 러닝타임 : 시작일 종료일 VO로 만들기
 
-    private Long id;
+    private Long treasureId;
 
     //보물의 이름
-    private String name;
-
-    //보물로 접근할 수 있는 QR코드
-    private String qrCode;
+    private String treasureName;
 
     //현재상태
     private String runningStatus;
 
-    private TargetPoint targetPoint;
+    private List<TargetPoint> targetPointList;
 
     private RunningTime runningTime;
 
-<<<<<<< HEAD
-
-    private Treasure(Long id, String name, String qrCode, String runningStatus,final String latitude,final String hardness,
-                     final LocalDate startDate,final LocalDate endDate) {
-
-        validation(id,name,qrCode,runningStatus);
-        this.id = id;
-        this.name = name;
-        this.qrCode = qrCode;
-        this.runningStatus = runningStatus;
-        this.targetPoint= TargetPoint.valueOfIatitudeAndHardness (latitude,hardness);
-        this.runningTime = RunningTime.valueOfStartDateAndEndDate(startDate,endDate);
-    }
-
-    public static Treasure valueOf(Long id, String name, String qrCode, String runningStatus,
-                                   String latitude,final String hardness,
-                                   final LocalDate startDate,final LocalDate endDate){
-        return new Treasure(id,name,qrCode,runningStatus,latitude,hardness,startDate,endDate);
-    }
-
-    public void validation(Long id, String name, String qrCode, String runningStatus){
-        if(id == null || StringUtils.isEmpty(name)|| StringUtils.isEmpty(qrCode)|| StringUtils.isEmpty(runningStatus)){
-            new IllegalArgumentException("Treasure 에서 예외 발생");
-=======
     //보물로 접근할 수 있는 QR코드
     private QRCodeVO qrCodeVO;
 
@@ -80,17 +56,7 @@ public class Treasure {
     public void validation(String name, String runningStatus,  List<TargetPoint> targetPointList,RunningTime runningTime, List<Mission> missionList ){
         if(missionList.isEmpty()|| StringUtils.isEmpty(name)|| StringUtils.isEmpty(runningStatus) || targetPointList.isEmpty() || runningTime == null) {
             new IllegalArgumentException("Treasure Exception !!!");
->>>>>>> afac6cd... *docs README 문서 수정
         }
     }
-    public String TreasureInfo() {
-        return "Treasure{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", qrCode='" + qrCode + '\'' +
-                ", runningStatus='" + runningStatus + '\'' +
-                ", targetPoint=" + targetPoint.getTargetPoint().get("latitude") + targetPoint.getTargetPoint().get("hardness") + '\'' +
-                ", runningTime=" + runningTime.getRunningTime().get("startDate") + runningTime.getRunningTime().get("endDate") + '\'' +
-                '}';
-    }
+
 }
