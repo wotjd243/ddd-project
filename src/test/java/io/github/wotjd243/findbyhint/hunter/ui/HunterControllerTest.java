@@ -70,5 +70,4 @@ public class HunterControllerTest {
                 .andDo(print());
         //.andExpect(status().is5xxServerError());
     }
-
 }
