@@ -92,7 +92,7 @@ int count = 12;
 | 헌터 이름 | hunterName | 헌터의 이름 |
 | 헌터 사진 경로 | hunterPicturePath | 헌터 사진의 경로 |
 | 헌터 사진 명 | hunterPictureName | 헌터 사진의 파일명 |
-| 총알 | bullet | 헌터가 하루에 미션에 도전할 수 있는 기회 |
+| 총알 | hunterBullet | 헌터가 하루에 미션에 도전할 수 있는 기회 |
 
 |  총알 리필 시간 |  bulletRefillTime  | 총알이 생성되기 까지 걸리는 시간  |
 |  획득량 |  pointAmount  |  미션을 풀었을때 주어지는 포인트량   |
