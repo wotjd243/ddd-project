@@ -27,7 +27,6 @@ public class ReservationController {
     @PostMapping
     public ApiResponse add(@RequestBody @Valid ReservationDto.Create create) {
 
-        create.validAndConvert();
         Long buyerId = 1L;
         reservationService.add(buyerId, create.getRegisteredBookId());
 
