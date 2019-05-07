@@ -12,7 +12,7 @@ public interface CartRepository {
      * @param userId 유저 ID
      * @return Cart 에 담긴 제품 목록
      */
-    public List<Product> selectProductsToCart(String userId);
+    public List<Product> selectProductsToCart(Long userId);
 
 
 }

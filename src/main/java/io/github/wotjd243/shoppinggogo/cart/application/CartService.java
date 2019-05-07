@@ -29,7 +29,7 @@ public class CartService {
      * @param userId 유저 ID
      * @param product Cart에 추가 될 제품
      */
-    public void addProductToCart(String userId, Product product) {
+    public void addProductToCart(Long userId, Product product) {
 
     }
 
@@ -40,7 +40,7 @@ public class CartService {
      * @param userId 유저 ID
      * @param product Cart 제거 될 제품
      */
-    public void removeProductFromCart(String userId, Product product) {
+    public void removeProductFromCart(Long userId, Product product) {
 
     }
 
@@ -50,7 +50,7 @@ public class CartService {
      * @param userId 유저 ID
      * @return Cart 에 담긴 제품 목록
      */
-    public List<Product> findProductsToCart(String userId) {
+    public List<Product> findProductsToCart(Long userId) {
         return cartRepository.selectProductsToCart(userId);
     }
 

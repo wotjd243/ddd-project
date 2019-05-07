@@ -14,12 +14,11 @@ public class OrderService {
     private UserRepository userRepository;
     private CartRepository cartRepository;
 
-    public Order makeOrder(String userId, String cartId) {
+    public Order makeOrder(Long userId, String cartId) {
         Optional<User> maybeUser = userRepository.findById(userId);
         User user = maybeUser.get();
 
         List<Product> selectProducts = cartRepository.selectProductsToCart(userId);
-
 
         return new Order(userId,user.getAddress(), user.getPhoneNumber(),selectProducts.stream().map(product -> product.getId()).collect(Collectors.toList()));
     }

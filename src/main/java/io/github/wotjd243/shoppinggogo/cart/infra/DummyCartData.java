@@ -10,7 +10,7 @@ import java.util.*;
 
 public class DummyCartData {
 
-    private static final Map<String, Cart> carts = new HashMap<>();
+    private static final Map<Long, Cart> carts = new HashMap<>();
 
     static {
         List<Product> product1s = new ArrayList<>();
@@ -24,7 +24,7 @@ public class DummyCartData {
                 new ProductImage(1000L, 1L, "/ddd/project/link", "file.jpg", new Date()),
                 price1s,
                 new Date(), new Date()));
-        carts.put("test",         new Cart(1L, "test", product1s, Arrays.asList(1L)));
+        carts.put(1L,         new Cart(1L, 1L, product1s, Arrays.asList(1L)));
 
         List<Product> product2s = new ArrayList<>();
         List<PriceRecord> price2s = new ArrayList<>();
@@ -34,14 +34,14 @@ public class DummyCartData {
                 new ProductImage(2000L, 2L, "/pocket", "monster.jpg", new Date()),
                 price2s,
                 new Date(), new Date()));
-        carts.put("test2",         new Cart(2L, "test2", product2s, Arrays.asList(2L)));
+        carts.put(2L,         new Cart(2L, 2L, product2s, Arrays.asList(2L)));
     }
 
-    public static Cart getByUserId(final String userId) {
+    public static Cart getByUserId(final long userId) {
         return carts.get(userId);
     }
 
-    public static Cart put(final Long id, final String userId, final List<Product> products,
+    public static Cart put(final Long id, final long userId, final List<Product> products,
                            final List<Long> checkedProducts) {
         return carts.put(userId, new Cart(id, userId, products, checkedProducts));
     }

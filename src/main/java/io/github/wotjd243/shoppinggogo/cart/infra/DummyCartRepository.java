@@ -9,7 +9,7 @@ import java.util.List;
 public class DummyCartRepository implements CartRepository {
 
     @Override
-    public List<Product> selectProductsToCart(String userId) {
+    public List<Product> selectProductsToCart(Long userId) {
 
         return DummyCartData.getByUserId(userId)
                 .getProducts();
