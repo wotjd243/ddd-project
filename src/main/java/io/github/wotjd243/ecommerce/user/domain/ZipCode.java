@@ -3,6 +3,7 @@ package io.github.wotjd243.ecommerce.user.domain;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class ZipCode {
     private final String code;
@@ -20,6 +21,12 @@ public class ZipCode {
 
     private boolean isInvalid(String code) {
         if (StringUtils.isBlank(code)) {
+            return true;
+        }
+        if (!PatternEnum.POSTALCODE.toPattern()
+                .matcher(code)
+                .find()
+        ) {
             return true;
         }
         return false;
@@ -40,5 +47,20 @@ public class ZipCode {
     @Override
     public int hashCode() {
         return Objects.hash(code);
+    }
+
+    public enum PatternEnum {
+
+        POSTALCODE("\\d{5}");
+
+        private final String regex;
+
+        private PatternEnum(final String regex) {
+            this.regex = regex;
+        }
+
+        public Pattern toPattern() {
+            return Pattern.compile(regex);
+        }
     }
 }

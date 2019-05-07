@@ -6,17 +6,15 @@ import java.util.Objects;
 
 public class ShippingAddress {
     private Long id;
-    private String userId;
     private String address;
     private ZipCode zipcode;
 
-    public ShippingAddress(String userId, String address, ZipCode zipcode) {
-        if (StringUtils.isBlank(address) || StringUtils.isBlank(userId)) {
+    public ShippingAddress(String address, String zipcode) {
+        if (StringUtils.isBlank(address) || StringUtils.isBlank(zipcode)) {
             throw new IllegalArgumentException();
         }
-        this.userId = userId;
         this.address = address;
-        this.zipcode = zipcode;
+        this.zipcode = ZipCode.codeOf(zipcode);
     }
 
     @Override
@@ -24,13 +22,12 @@ public class ShippingAddress {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShippingAddress that = (ShippingAddress) o;
-        return Objects.equals(userId, that.userId) &&
-                Objects.equals(address, that.address) &&
+        return Objects.equals(address, that.address) &&
                 Objects.equals(zipcode, that.zipcode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, address, zipcode);
+        return Objects.hash(address, zipcode);
     }
 }

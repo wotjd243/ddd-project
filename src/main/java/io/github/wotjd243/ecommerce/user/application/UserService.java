@@ -1,9 +1,7 @@
 package io.github.wotjd243.ecommerce.user.application;
 
-import io.github.wotjd243.ecommerce.user.application.dto.ShippingAddressDto;
 import io.github.wotjd243.ecommerce.user.application.dto.UserRequestDto;
 import io.github.wotjd243.ecommerce.user.application.dto.UserResponseDto;
-import io.github.wotjd243.ecommerce.user.domain.ShippingAddress;
 import io.github.wotjd243.ecommerce.user.domain.User;
 import io.github.wotjd243.ecommerce.user.domain.UserRepository;
 import io.github.wotjd243.ecommerce.user.domain.exception.ResourceNotFoundException;
@@ -13,20 +11,9 @@ import java.util.stream.Collectors;
 
 public class UserService {
     private final UserRepository userRepository;
-    private ShippingAddressService shippingAddressService;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    public UserService(UserRepository userRepository,
-                       ShippingAddressService shippingAddressService) {
-        this.userRepository = userRepository;
-        this.shippingAddressService = shippingAddressService;
-    }
-
-    public ShippingAddress addShippingAddress(String userId, ShippingAddressDto shippingAddressDto) {
-        return shippingAddressService.addShippingAddress(userId, shippingAddressDto);
     }
 
     public UserResponseDto register(UserRequestDto dto) {

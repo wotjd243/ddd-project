@@ -14,11 +14,15 @@ public class User {
         this.address = address;
     }
 
-    public UserResponseDto toDto(){
+    public UserResponseDto toDto() {
         return new UserResponseDto(userId);
     }
 
     public boolean match(String userId) {
         return this.userId == userId;
+    }
+
+    public ShippingAddress addShippingAddress(String address, String zipCode) {
+        return shippingAddresses.add(new ShippingAddress(address, zipCode));
     }
 }

@@ -9,4 +9,11 @@ public class ShippingAddresses {
     public ShippingAddresses(Set<ShippingAddress> shippingAddresses) {
         this.shippingAddresses = shippingAddresses;
     }
+
+    public ShippingAddress add(ShippingAddress shippingAddress) {
+        if (!shippingAddresses.add(shippingAddress)) {
+            throw new IllegalArgumentException();
+        }
+        return shippingAddress;
+    }
 }
