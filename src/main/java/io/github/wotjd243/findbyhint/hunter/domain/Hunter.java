@@ -1,9 +1,10 @@
 package io.github.wotjd243.findbyhint.hunter.domain;
 
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
 public class Hunter {
 
-    // TODO (3)‘헌터' 가 미션을 풀 수있는 기회의 수는 총알이다. 관련된 객체 생성하기.
-    // TODO (2)‘헌터' 는 미션 포인트를 100점 모으면 문제를 풀 수 있는 총알을 하나 얻는다.
+    // TODO (1) 올바른 Exception 처리 관련 질문해서 반영하기.
 
     private final HunterId hunterId;
 
@@ -30,6 +31,9 @@ public class Hunter {
     }
 
     public void decreaseOneBullet() {
+
+        int aa;
+
         if (hunterBullet < 1) {
             throw new IllegalStateException();
         }
@@ -38,6 +42,7 @@ public class Hunter {
 
     public void increaseOneBullet() {
         if (hunterBullet >= 3) {
+            log.println("이미 총알이 3개입니다.");
             throw new IllegalStateException();
         }
         hunterBullet++;
@@ -45,12 +50,18 @@ public class Hunter {
 
     public void buyOneBullet() {
 
-        if (hunterPoint.hunterPointCheck()) {
+        log.println("before_hunterPoint : " + hunterPoint.getHunterPoint());
+        log.println("before_hunterBullet : " + hunterBullet);
+
+        if (hunterPoint.bulletBuyPointCheck()) {
             hunterPoint.hunterPointMinus(100);
             increaseOneBullet();
-        }else{
+        } else {
+            log.println("포인트가 부족합니다.");
             throw new IllegalStateException();
         }
+        log.println("after_hunterPoint : " + hunterPoint.getHunterPoint());
+        log.println("after_hunterBullet : " + hunterBullet);
     }
 
 }
