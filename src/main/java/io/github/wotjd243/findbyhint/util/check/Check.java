@@ -10,10 +10,6 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 @Service
 public class Check {
 
-    private Check() {
-        throw new AssertionError();
-    }
-
     public static void idpwCheck(String value) {
 
         char chrInput;
