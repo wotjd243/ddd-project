@@ -1,8 +1,10 @@
 package io.github.wotjd243.shoppinggogo.user.domain;
 
+import lombok.Getter;
+
 import javax.xml.bind.ValidationException;
 import java.util.regex.Pattern;
-
+@Getter
 public class Phone {
 
     private String phoneNumber;
