@@ -42,4 +42,8 @@ public class Product {
     public Long getId() {
         return id;
     }
+
+    public List<PriceRecord> getPrices() {
+        return prices;
+    }
 }

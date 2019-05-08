@@ -5,7 +5,6 @@ import lombok.Getter;
 
 import java.util.Date;
 
-@Getter
 public class PriceRecord {
     private Long id; //ID
     private Integer lowestPrice; //가장 낮은 가격
