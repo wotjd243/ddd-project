@@ -1,7 +1,13 @@
 package io.github.wotjd243.shoppinggogo.product.application;
 
 import io.github.wotjd243.shoppinggogo.product.domain.Category;
+import io.github.wotjd243.shoppinggogo.product.domain.PriceRecord;
+import io.github.wotjd243.shoppinggogo.product.domain.Product;
+import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
+import java.util.NoSuchElementException;
 
 @Service
 public class ProductService {
@@ -26,4 +32,17 @@ public class ProductService {
     public void findRecommendProducts(Category category) {
 
     }
+
+
+    /**
+     * 제품 가장 낮은 가격을 조회한다.
+     * @return
+     */
+    public Integer findLowestPriceByProduct(Product product) {
+        return product.getPrices().stream().min(Comparator.comparing( PriceRecord::getLowestPrice ))
+                .orElseThrow(NoSuchElementException::new)
+                .getLowestPrice();
+    }
+
+
 }

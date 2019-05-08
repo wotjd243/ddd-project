@@ -45,11 +45,11 @@ public class CartServiceTest {
                 price1s,
                 new Date(), new Date()));
 
-        given(cartRepository.selectProductsToCart("test").stream()
+        given(cartRepository.selectProductsToCart(1L).stream()
                 .collect(Collectors.toList()))
                 .willReturn(product1s);
 
-        final List<Product> results = cartService.findProductsToCart("test");
+        final List<Product> results = cartService.findProductsToCart(1L);
         List<Long> s = results.stream().map(product -> product.getId())
                 .collect(Collectors.toList());
         assertThat(s)
