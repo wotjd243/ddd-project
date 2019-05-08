@@ -50,7 +50,7 @@ public class CartService {
      * @param userId 유저 ID
      * @return Cart 에 담긴 제품 목록
      */
-    public List<Product> findProductsToCart(Long userId) {
+    public List<Long> findProductsToCart(Long userId) {
         return cartRepository.selectProductsToCart(userId);
     }
 

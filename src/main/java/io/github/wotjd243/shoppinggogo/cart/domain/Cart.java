@@ -5,6 +5,7 @@ import io.github.wotjd243.shoppinggogo.user.domain.User;
 import lombok.Data;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,7 @@ public class Cart {
         this.id = id;
         this.userId = userId;
         this.products = products;
-        this.checkedProductIds = checkedProductIds;
+        this.checkedProductIds = new ArrayList<Long>(checkedProductIds);
     }
 
     /**
@@ -37,25 +38,23 @@ public class Cart {
      * 카트에 담긴 제품 목록과 체크되어진 제품 목록을 매칭시킨다.
      * @param checkedProductIds 체크되어진 제품 ID 목록
      */
-    public List<Product> matchByCheckedProductIds(List<Long> checkedProductIds) {
-        return products.stream().filter(product ->
-                        checkedProductIds.contains(product.getId()))
-                .collect(Collectors.toList());
-    }
 
     /**
      * 카트에 담긴 제품 최저 가격의 총 합을 얻는다.
      */
-    public int getProductLowestPriceSumBySelectedProducts() {
-        return matchByCheckedProductIds(checkedProductIds)
-                .stream().mapToInt(p -> p.findLowestPrice().getLowestPrice()).sum();
-    }
+//    public int getProductLowestPriceSumBySelectedProducts() {
+//        return checkedProductIds.forEach((p));
+//    }
 
     public Long getId() {
         return id;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Long> getProducts() {
+        List<Long> productIds = new ArrayList<Long>();
+        for(Product p: products){
+            productIds.add(p.getId());
+        }
+        return productIds;
     }
 }

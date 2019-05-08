@@ -13,28 +13,32 @@ public class DummyCartData {
     private static final Map<Long, Cart> carts = new HashMap<>();
 
     static {
+        //상품 목록
         List<Product> product1s = new ArrayList<>();
-        List<PriceRecord> price1s = new ArrayList<>();
-        price1s.add(new PriceRecord(1L, 10, 30, 20,
-                new Date(), new Date()));
-        price1s.add(new PriceRecord(2L,11, 31, 21, new Date(), new Date()));
-        price1s.add(new PriceRecord(3L, 12, 32, 22, new Date(), new Date()));
-
-        product1s.add(new Product(    1L, "DDD 프로젝트",  new Category("강의", "프로그래밍"),
-                new ProductImage(1000L, 1L, "/ddd/project/link", "file.jpg", new Date()),
-                price1s,
-                new Date(), new Date()));
-        carts.put(1L,         new Cart(1L, 1L, product1s, Arrays.asList(1L)));
-
         List<Product> product2s = new ArrayList<>();
-        List<PriceRecord> price2s = new ArrayList<>();
-        price2s.add(new PriceRecord(1L, 100, 300, 200,
-                new Date(), new Date()));
-        product2s.add(new Product(    2L, "포켓몬스터",  new Category("강의", "프로그래밍"),
+
+        //상품가격 및 상품
+        PriceRecord price1 = new PriceRecord(11,31,21, new Date(), new Date());
+        Product product01 = new Product(1L,"DDD 프로젝트", new Category("강의", "프로그래밍"),
+                new ProductImage(1000L, 1L, "/ddd/project/link", "file.jpg", new Date()),
+                price1,
+                new Date(), new Date());
+
+        PriceRecord price2 = new PriceRecord(100, 300, 200, new Date(), new Date());
+        Product product02 = new Product(2L, "포켓몬스터",  new Category("강의", "프로그래밍"),
                 new ProductImage(2000L, 2L, "/pocket", "monster.jpg", new Date()),
-                price2s,
-                new Date(), new Date()));
-        carts.put(2L,         new Cart(2L, 2L, product2s, Arrays.asList(2L)));
+                price2,
+                new Date(), new Date());
+
+
+        product1s.add(product01);
+        product2s.add(product01);
+        product2s.add(product02);
+
+
+        put(1L, 1L, product1s, Arrays.asList(1L));
+
+        put(2L, 2L, product2s, Arrays.asList(2L));
     }
 
     public static Cart getByUserId(final long userId) {
