@@ -36,7 +36,7 @@
 | 보유 책 | CollectedBook | 대여점이 보유하고 있는 책 |
 | 총 수량 | totalQuantity | 보유 하고 있는 총량, 대여점이 구매하여 둔 책의 총 수량 |
 | 현재 수량 | nowQuantity | 대여 여부에 따른 현재 보유하고 있는 수량 |
-| 대여 기록 | BookRentHistory | 책의 대여 정보 |
+| 대여 기록 | Rent | 책의 대여 정보 |
 | 대여된 날짜 | rentStartDatetime | 대여 시작 날짜 |
 | 반납된 날짜 | returnDateTime | 반납된 날짜 |
 | 반납 기한 | returnDeadLine | 반납을 해야 할 마지막 날 |
@@ -50,11 +50,14 @@
 - `Book`은 ISBN 값을 통해 고유한 ID를 가진다.
 - `Book`은 제목, Isbn, 저자, 설명, 출팔일을 가진다.
 - `CollectedBook`은 고유한 ID를 가진다.
-- `CollectedBook`은 총 갯수, 현재 보유 중인 수량을 가지고 있다.(현재 보유중인 수량이 0이면 대여 불가)
+- `CollectedBook`은 고유한 책의 isbn을 가지고 있다.
+- `CollectedBook`은 책이 위치한 매장 정보, 매장의 책장의 어디에 위치하고 있는지에 대한 정보를 가지고 있다.
+- `CollectedBook`은 대여 가능한지에 대한 여부를 가지고 있다.
+- `CollectedBook`은 대여 될 수 있고, 반납될 수 있다.
 - `User`는 고유한 ID를 가진다.
 - `User`는 이름, 전화번호, 생년월일을 가진다.
-- `BookRentHistory`는 고유한 ID를 가진다.
-- `BookRentHistory`는 대열 시작일, 반납일, 반납 예정일을 가진다.
+- `Rent`는 고유한 ID를 가진다.
+- `Rent`는 대열 시작일, 반납일, 반납 예정일을 가진다.
 
 ## 도메인 계층 구현하기
 
@@ -90,7 +93,7 @@
     }
 
     @Entity
-    public class BookRentHistory {
+    public class Rent {
     	@Id
     	@GeneratedValue
     	private Long id;
