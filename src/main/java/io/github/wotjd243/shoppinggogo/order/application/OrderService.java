@@ -10,6 +10,7 @@ import io.github.wotjd243.shoppinggogo.user.infra.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,8 +32,12 @@ public class OrderService {
         return order;
     }
 
-    public int calculateOrderProductsPrice(long orderId){
-        Order order = getOrder(orderId);
+    /**
+     * @param orderId
+     * @return
+     */
+    public int sumOrderedProductsPrice(long orderId){
+        Order order = getOrderById(orderId);
         int totalPrice = (int) order.getOrderProducts().stream().mapToLong(
                 (productId) ->
                 productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new)
@@ -40,16 +45,18 @@ public class OrderService {
                         .sum();
         return totalPrice;
     }
-    public List<Product> getProductList ( long orderId){
-        Order order = getOrder(orderId);
-        List<Product> orderProducts = new ArrayList<Product>();
-        for ( long productId:order.getOrderProducts() ) {
-            orderProducts.add( productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new));
-        }
 
-        return orderProducts;
+    public List<Product> getOrdedProducts( long orderId){
+        Order order = getOrderById(orderId);
+        //y = f(x)
+        return order.getOrderProducts().stream()
+                .map(productId ->
+                        productRepository.findbyId(productId)
+                                .orElseThrow(IllegalArgumentException::new))
+                .collect(Collectors.toList());
     }
-    public Order getOrder( long orderId){
+
+    public Order getOrderById(long orderId){
         return orderRepository.findbyId(orderId)
                 .orElseThrow(IllegalAccessError::new);
     }
