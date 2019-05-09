@@ -22,7 +22,7 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     public Order makeOrder(Long userId, String cartId) {
-        Optional<User> maybeUser = Optional.ofNullable(userRepository.findById(userId).orElseThrow(IllegalAccessError::new));
+        Optional<User> maybeUser = Optional.ofNullable(userRepository.findById(userId).orElseThrow(IllegalArgumentException::new));
         User user = maybeUser.get();
         Order order = new Order(user.getId());
         order.enterOrderProducts( cartRepository.selectProductsToCart(userId));
@@ -33,9 +33,9 @@ public class OrderService {
 
     public int calculateOrderProductsPrice(long orderId){
         Order order = getOrder(orderId);
-        int totalPrice= order.getOrderProducts().stream().mapToInt(
+        int totalPrice = (int) order.getOrderProducts().stream().mapToLong(
                 (productId) ->
-                productRepository.findbyId(productId)
+                productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new)
                         .findLowestPrice())
                         .sum();
         return totalPrice;
@@ -44,7 +44,7 @@ public class OrderService {
         Order order = getOrder(orderId);
         List<Product> orderProducts = new ArrayList<Product>();
         for ( long productId:order.getOrderProducts() ) {
-            orderProducts.add( productRepository.findbyId(productId));
+            orderProducts.add( productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new));
         }
 
         return orderProducts;

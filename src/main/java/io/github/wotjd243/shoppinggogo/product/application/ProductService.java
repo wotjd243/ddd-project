@@ -39,9 +39,7 @@ public class ProductService {
      * @return
      */
     public Integer findLowestPriceByProduct(Product product) {
-        return product.getPrices().stream().min(Comparator.comparing( PriceRecord::getLowestPrice ))
-                .orElseThrow(NoSuchElementException::new)
-                .getLowestPrice();
+        return product.findLowestPrice();
     }
 
 

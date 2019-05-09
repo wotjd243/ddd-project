@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,23 +34,15 @@ public class CartServiceTest {
     @Test
     public void 유저ID_test일경우_결과값은_ProductID_1() {
 
-        List<Product> product1s = new ArrayList<>();
-        ;
-        PriceRecord price1 = new PriceRecord( 10, 30, 20,
-                new Date(), new Date());
-        product1s.add(new Product(    1L, "DDD 프로젝트",  new Category("강의", "프로그래밍"),
-                new ProductImage(1000L, 1L, "/ddd/project/link", "file.jpg", new Date()),
-                price1,
-                new Date(), new Date()));
+        List<Long> product1s = Arrays.asList(1L,2L,3L);
 
         given(cartRepository.selectProductsToCart(1L).stream()
                 .collect(Collectors.toList()))
                 .willReturn(product1s);
 
-        final List<Product> results = cartService.findProductsToCart(1L);
-        List<Long> s = results.stream().map(product -> product.getId())
-                .collect(Collectors.toList());
-        assertThat(s)
+        final List<Long> results = cartService.findProductsToCart(1L);
+
+        assertThat(results)
                 .containsAnyOf(1L);
     }
 }

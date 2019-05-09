@@ -11,7 +11,7 @@ public class DummayProductData {
     private static final Map<Long, Product> products = new HashMap<>();
 
     static {
-        PriceRecord price1 = new PriceRecord(1L, 10, 30, 20,
+        PriceRecord price1 = new PriceRecord(18, 10, 30,
                 new Date(), new Date());
         put(    1L, "DDD 프로젝트",  new Category("강의", "프로그래밍"),
                 new ProductImage(1000L, 1L, "/ddd/project/link", "file.jpg", new Date()),
@@ -19,9 +19,10 @@ public class DummayProductData {
                 new Date(), new Date());
 
         List<PriceRecord> price2s = new ArrayList<>();
-        price2s.add(new PriceRecord(1L, 100, 300, 200,
+        price2s.add(new PriceRecord( 100, 300, 200,
                 new Date(), new Date()));
-        PriceRecord price2 = new PriceRecord(2L,11, 31, 21, new Date(), new Date());
+
+        PriceRecord price2 = new PriceRecord(11, 31, 21, new Date(), new Date());
         put(    2L, "포켓몬스터",  new Category("강의", "프로그래밍"),
                 new ProductImage(2000L, 2L, "/pocket", "monster.jpg", new Date()),
                 price2,
