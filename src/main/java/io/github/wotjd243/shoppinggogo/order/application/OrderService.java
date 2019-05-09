@@ -21,17 +21,23 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
-    private UserRepository userRepository;
-    private CartRepository cartRepository;
-    private ProductRepository productRepository;
+
     private OrderRepository orderRepository;
+
     @Autowired
     private UserService userService;
+
     @Autowired
     private CartService cartService;
+
     @Autowired
     private ProductService productService;
 
+    /**
+     *
+     * @param userId
+     * @return Order
+     */
     public Order makeOrder(Long userId) {
         Optional<User> maybeUser = Optional.ofNullable(userService.getUser(userId).orElseThrow(IllegalArgumentException::new));
         User user = maybeUser.get();
@@ -40,25 +46,42 @@ public class OrderService {
         return order;
     }
 
-    public int calculateOrderProductsPrice(long orderId){
-        Order order = getOrder(orderId);
-        int totalPrice = (int) order.getDefaultBuyerInfo().getOrderProducts().stream().mapToLong(
+    /**
+     * @param orderId
+     * @return int totalPrice
+     */
+    public int sumOrderedProductsPrice(long orderId){
+        Order order = getOrderById(orderId);
+
+        int totalPrice = (int) order.getBuyerInfo().getOrderProducts().stream().mapToLong(
                 (productId) ->
-                productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new)
+                productService.findProductsById(productId).orElseThrow(IllegalArgumentException::new)
                         .findLowestPrice())
                         .sum();
         return totalPrice;
     }
-    public List<Product> getProductList ( long orderId){
-        Order order = getOrder(orderId);
-        List<Product> orderProducts = new ArrayList<Product>();
-        for ( long productId:order.getOrderProducts() ) {
-            orderProducts.add( productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new));
-        }
 
-        return orderProducts;
+    /**
+     *
+     * @param orderId
+     * @return List<Product>
+     */
+    public List<Product> getOrdedProducts( long orderId) {
+        Order order = getOrderById(orderId);
+        //y = f(x)
+        return order.getBuyerInfo().getOrderProducts().stream()
+                .map(productId ->
+                        productService.findProductsById(productId)
+                                .orElseThrow(IllegalArgumentException::new))
+                .collect(Collectors.toList());
     }
-    public Order getOrder( long orderId){
+
+    /**
+     *
+     * @param orderId
+     * @return Order
+     */
+    public Order getOrderById(long orderId){
         return orderRepository.findbyId(orderId)
                 .orElseThrow(IllegalAccessError::new);
     }

@@ -22,9 +22,6 @@ public class Order {
         this.userId = userId;
     }
 
-    public BuyerInfo getDefaultBuyerInfo(){
-        return this.buyerInfo;
-    }
     public void setBuyerInfo( Address destination, Phone phone ,List<Long> orderProducts){
         this.buyerInfo = new BuyerInfo(destination, phone,orderProducts);
     }
