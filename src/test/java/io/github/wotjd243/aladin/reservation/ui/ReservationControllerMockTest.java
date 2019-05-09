@@ -150,7 +150,6 @@ public class ReservationControllerMockTest {
         MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
         ObjectMapper mapper = new ObjectMapper();
 
-        System.out.println(mockHttpServletResponse.getContentAsString());
         return mapper.readValue(mockHttpServletResponse.getContentAsString(), ApiResponse.class);
     }
 

@@ -2,28 +2,24 @@ package io.github.wotjd243.aladin.reservation.ui.dto;
 
 import io.github.wotjd243.aladin.utils.LongConvert;
 import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
-public class ReservationDto {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ReservationDto {
 
-    @Setter
-    @Getter
     @NoArgsConstructor
     public static class Create {
 
+        @Setter(AccessLevel.PRIVATE)
         @NotBlank
         private String bookId;
 
-        @Setter(AccessLevel.NONE)
-        private Long registeredBookId;
+        public Long getRegisteredBookId() {
 
-        public void validAndConvert() {
-
-            this.registeredBookId = LongConvert.valueOf("bookId", bookId);
+            return LongConvert.valueOf("bookId", bookId);
         }
     }
 }
