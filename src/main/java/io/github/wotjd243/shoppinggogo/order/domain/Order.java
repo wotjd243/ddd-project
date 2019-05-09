@@ -15,24 +15,18 @@ public class Order {
     //주문 기능에 주소를 변경할 수 있다.
     private Long OrderId;
     private Long userId;
-    private Address destination;
-    private Phone phone;
-    private List<Long> orderProducts;
+    private BuyerInfo buyerInfo;
+
 
     public Order(Long userId) {
         this.userId = userId;
     }
 
-    public void enterAddress(Address destination){
-        this.destination = new Address( destination.getAddress());
+    public BuyerInfo getDefaultBuyerInfo(){
+        return this.buyerInfo;
     }
-
-    public void enterPhone(Phone phone){
-        this.phone = new Phone(phone.getPhoneNumber());
-    }
-
-    public void enterOrderProducts(List<Long> orderProducts){
-        this.orderProducts = new ArrayList<Long>(orderProducts);
+    public void setBuyerInfo( Address destination, Phone phone ,List<Long> orderProducts){
+        this.buyerInfo = new BuyerInfo(destination, phone,orderProducts);
     }
 
 }

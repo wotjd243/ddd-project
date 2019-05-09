@@ -1,15 +1,20 @@
 package io.github.wotjd243.shoppinggogo.order.application;
 
+import io.github.wotjd243.shoppinggogo.cart.application.CartService;
 import io.github.wotjd243.shoppinggogo.cart.infra.CartRepository;
 import io.github.wotjd243.shoppinggogo.order.domain.Order;
 import io.github.wotjd243.shoppinggogo.order.domain.OrderRepository;
+import io.github.wotjd243.shoppinggogo.product.application.ProductService;
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.product.infra.ProductRepository;
+import io.github.wotjd243.shoppinggogo.user.application.UserService;
 import io.github.wotjd243.shoppinggogo.user.domain.User;
 import io.github.wotjd243.shoppinggogo.user.infra.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,20 +25,24 @@ public class OrderService {
     private CartRepository cartRepository;
     private ProductRepository productRepository;
     private OrderRepository orderRepository;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private CartService cartService;
+    @Autowired
+    private ProductService productService;
 
-    public Order makeOrder(Long userId, String cartId) {
-        Optional<User> maybeUser = Optional.ofNullable(userRepository.findById(userId).orElseThrow(IllegalArgumentException::new));
+    public Order makeOrder(Long userId) {
+        Optional<User> maybeUser = Optional.ofNullable(userService.getUser(userId).orElseThrow(IllegalArgumentException::new));
         User user = maybeUser.get();
         Order order = new Order(user.getId());
-        order.enterOrderProducts( cartRepository.selectProductsToCart(userId));
-        order.enterAddress( user.getAddress());
-        order.enterPhone( user.getPhoneNumber());
+        order.setBuyerInfo(user.getAddress(),user.getPhoneNumber(), cartService.findProductsToCart(userId));
         return order;
     }
 
     public int calculateOrderProductsPrice(long orderId){
         Order order = getOrder(orderId);
-        int totalPrice = (int) order.getOrderProducts().stream().mapToLong(
+        int totalPrice = (int) order.getDefaultBuyerInfo().getOrderProducts().stream().mapToLong(
                 (productId) ->
                 productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new)
                         .findLowestPrice())
