@@ -23,6 +23,7 @@ public class Order {
     }
 
     public Buyer getBuyer() {
-        return buyer;
+        return this.buyer;
     }
+    public long getUser(){return this.userId;}
 }

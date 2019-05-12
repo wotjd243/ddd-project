@@ -21,6 +21,7 @@ public class DummyOrderData {
 
     }
 
+
     public static Order get(long orderId){
         return orderData.get(orderId);
     }
@@ -37,6 +38,10 @@ public class DummyOrderData {
                        )
                )
        );
+    }
+
+    public static Map<Long,Order> getOrderData(){
+        return orderData;
     }
 
 }

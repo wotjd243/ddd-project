@@ -91,6 +91,6 @@ public class OrderService {
      *TODO 유저아이디로 주문정보들을 가지고 온다.
      */
     public ArrayList<Order> getOrderByUserId(Long userId){
-        return null;
+        return orderRepository.findByUserId(userId);
     }
 }
