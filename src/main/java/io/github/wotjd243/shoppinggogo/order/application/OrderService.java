@@ -50,7 +50,7 @@ public class OrderService {
 
         int totalPrice = (int) order.getBuyerInfo().getOrderProducts().stream().mapToLong(
                 (productId) ->
-                productService.findProductsById(productId).orElseThrow(IllegalArgumentException::new)
+                productService.findProductById(productId).orElseThrow(IllegalArgumentException::new)
                         .findLowestPrice())
                         .sum();
         return totalPrice;
@@ -66,7 +66,7 @@ public class OrderService {
         //y = f(x)
         return order.getBuyerInfo().getOrderProducts().stream()
                 .map(productId ->
-                        productService.findProductsById(productId)
+                        productService.findProductById(productId)
                                 .orElseThrow(IllegalArgumentException::new))
                 .collect(Collectors.toList());
     }

@@ -37,9 +37,13 @@ public class ProductService {
 
     }
 
-    public Optional<Product> findProductsById(long productId){
-        Product product = productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new);
-        return Optional.ofNullable(product);
+    /**
+     * 제품 ID 값에 의해, 제품 목록을 찾는다.
+     * @param productId 제품 명
+     * @return 제품 정보
+     */
+    public Optional<Product> findProductById(long productId){
+        return productRepository.findById(productId);
     }
 
     /**
