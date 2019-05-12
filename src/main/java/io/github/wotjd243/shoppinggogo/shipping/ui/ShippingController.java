@@ -25,7 +25,7 @@ public class ShippingController {
 
     // 배송 확인
     @GetMapping("/shipping/{shippingNum}")
-    public ResponseEntity<Shipping> getShipping(@PathVariable String shippingNum)
+    public ResponseEntity<Shipping> getShipping(@PathVariable Long shippingNum)
     {
         if( shippingService.getShippingInfo(shippingNum).isPresent() ) {
             return new ResponseEntity(shippingService.getShippingInfo(shippingNum).get(), HttpStatus.OK);
