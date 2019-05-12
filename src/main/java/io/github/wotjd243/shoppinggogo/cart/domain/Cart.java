@@ -13,6 +13,7 @@ public class Cart {
     public Cart(Long id, Long userId, List<Long> productIds) {
         this.id = id;
         this.userId = userId;
+        System.out.println(productIds.toString());
         this.productIds = new ArrayList<>(productIds);
     }
 
@@ -31,5 +32,14 @@ public class Cart {
 
     public List<Long> getProductIds() {
         return productIds;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", productIds=" + productIds +
+                '}';
     }
 }
