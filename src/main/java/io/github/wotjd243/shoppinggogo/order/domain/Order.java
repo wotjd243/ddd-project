@@ -2,27 +2,27 @@ package io.github.wotjd243.shoppinggogo.order.domain;
 
 import io.github.wotjd243.shoppinggogo.user.domain.Address;
 import io.github.wotjd243.shoppinggogo.user.domain.Phone;
-import lombok.Getter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 //유저 장바구니 목록에 있는 것을 종합하여 주문한다.
 public class Order {
     //주문 기능에 주소를 변경할 수 있다.
     private Long orderId;
     private Long userId;
-    private BuyerInfo buyerInfo;
+    private Buyer buyer;
 
-
-    public Order(Long userId) {
+    /**
+     *
+     * @param userId
+     * @param buyer
+     */
+    public Order(long userId, Buyer buyer) {
         this.userId = userId;
+        this.buyer = buyer;
     }
 
-    public void setBuyerInfo( Address destination, Phone phone, List<Long> orderProducts){
-        this.buyerInfo = new BuyerInfo(destination, phone, orderProducts);
-    }
-
-    public BuyerInfo getBuyerInfo() {
-        return buyerInfo;
+    public Buyer getBuyer() {
+        return buyer;
     }
 }
