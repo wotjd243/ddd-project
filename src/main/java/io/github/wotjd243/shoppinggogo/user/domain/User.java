@@ -1,10 +1,6 @@
 package io.github.wotjd243.shoppinggogo.user.domain;
 
-import lombok.Getter;
-
-@Getter
 public class User {
-
     private Long id;
     private Email email;
     private Address address;
@@ -22,6 +18,10 @@ public class User {
     public void changeAddress(String newAddress){
 
         this.address= new Address(newAddress);
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Address getAddress() {

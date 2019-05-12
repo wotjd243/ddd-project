@@ -23,24 +23,19 @@ public class ShippingService {
     }
 
     public boolean changeShippingStatus(final String id, final String shippingStatus) {
-
-        Shipping shipping = shippingRepository.findByShppingId(id).get();
-        if( shipping != null) {
-            ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
-            shippingDetailInfo.setShippingStatus(shippingStatus);
-        }
-
-        return shippingRepository.updateShipping(shipping);
+        return shippingRepository.findByShppingId(id).map(shipping -> {
+                ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
+                shippingDetailInfo.setShippingStatus(shippingStatus);
+                return shippingRepository.updateShipping(shipping);
+            }).orElse(false);
     }
 
     public boolean changeShippingPosition(final String id, final String position) {
-
-        Shipping shipping = shippingRepository.findByShppingId(id).get();
-        if( shipping != null) {
+        return shippingRepository.findByShppingId(id).map(shipping -> {
             ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
             shippingDetailInfo.setPosition(position);
-        }
-        return shippingRepository.updateShipping(shipping);
+            return shippingRepository.updateShipping(shipping);
+        }).orElse(false);
     }
 
 
