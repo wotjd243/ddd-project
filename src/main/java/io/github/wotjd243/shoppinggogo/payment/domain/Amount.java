@@ -39,4 +39,8 @@ public class Amount {
     public  static Amount valueOf(final int amount) {
         return new Amount(amount);
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }

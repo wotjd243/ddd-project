@@ -25,4 +25,14 @@ public class DummySellerData {
 
         return sellers.put( id, new Seller( id, brandName, president, phoneNumber, email, businessNum, addresss));
     }
+
+    public static boolean update(final Seller seller){
+
+        Long sellerId = seller.getId();
+        sellers.remove(sellerId);
+        sellers.put( sellerId, seller);
+        return sellers.get( sellerId ) != null;
+    }
+
+
 }
