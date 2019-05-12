@@ -31,12 +31,13 @@ public class OrderController {
 
     /**
      * 주문한 상품들의 정보를 response
-     * @param orderid
+     * @param orderId
      * @return List<Product>
      */
-    @GetMapping("/order/{orderid}")
-    public List<Product> getOrderProducts(@PathVariable long orderid){
-        return orderService.getOrdedProducts(orderid);
+    @GetMapping("/order/id/")
+    public List<Product> getOrderProducts( @RequestParam long orderId){
+        System.out.println(orderId);
+        return orderService.getOrdedProducts(orderId);
     }
 
     /**
@@ -44,8 +45,8 @@ public class OrderController {
      * @param orderId
      * @return totalPrice
      */
-    @GetMapping("/order/price/{orderid}")
-    public int sumProductsPrice( @PathVariable long orderId){
+    @GetMapping("/order/price/")
+    public int sumProductsPrice( @RequestParam long orderId){
 
         return orderService.sumOrderedProductsPrice(orderId);
     }
@@ -55,8 +56,8 @@ public class OrderController {
      * @param userId
      * @return ArrayList<Order>
      */
-    @GetMapping("/order/user/{userid}")
-    public ArrayList<Order> getOrdersByUserId(long userId){
+    @GetMapping("/order/user/")
+    public ArrayList<Order> getOrdersByUserId( @RequestParam long userId){
         return orderService.getOrderByUserId(userId);
     }
 
