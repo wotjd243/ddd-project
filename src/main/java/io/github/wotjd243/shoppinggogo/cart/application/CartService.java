@@ -1,7 +1,6 @@
 package io.github.wotjd243.shoppinggogo.cart.application;
 
 
-import io.github.wotjd243.shoppinggogo.cart.domain.Cart;
 import io.github.wotjd243.shoppinggogo.cart.infra.CartRepository;
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.product.application.ProductService;
@@ -10,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CartService {
@@ -45,16 +46,25 @@ public class CartService {
     }
 
     /**
-     * Cart 에 담긴 제품 목록을 찾는다.
+     * Cart 에 담긴 제품 ID 목록을 찾는다.
      *
+     * @param userId 유저 ID
+     * @return Cart 에 담긴 제품 ID 목록
+     */
+    public List<Long> findProductIdsFromCart(Long userId) {
+        return cartRepository.findCartByUserId(userId).getProductIds();
+    }
+
+    /**
+     * Cart 에 담긴 제품 목록을 찾는다.
      * @param userId 유저 ID
      * @return Cart 에 담긴 제품 목록
      */
-    public List<Long> findProductsFromCart(Long userId) {
-
-        Cart cart = cartRepository.findCartByUserId(userId);
-
-        return cart.getProductIds();
+    public List<Product> findProductsFromCart(Long userId) {
+        return cartRepository.findCartByUserId(userId).getProductIds().stream().map(productId ->
+            productService.findProductById(productId))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
     }
-
 }

@@ -17,11 +17,12 @@ public class Shipping implements Serializable {
     // 판매자 ( 개밥왕, 연락처 )
     private Seller seller;
 
-    public Shipping(Long id, String shippingStatus, String orderId, String position, Date processedDate,
+    public Shipping(Long id, String shippingStatus, Long orderId, String position, Date processedDate,
                     Invoice invoice, Seller seller) {
         this.id = id;
         this.Invoice = invoice;
         this.seller = seller;
+        this.shippingDetail = new ShippingDetailInfo(shippingStatus, orderId, position, processedDate);
     }
 
     public Long getId() {

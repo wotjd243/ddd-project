@@ -18,11 +18,11 @@ public class ShippingService {
         this.shippingRepository = shippingRepository;
     }
 
-    public Optional<Shipping> getShippingInfo(final String id){
+    public Optional<Shipping> getShippingInfo(final Long id){
         return shippingRepository.findByShppingId(id);
     }
 
-    public boolean changeShippingStatus(final String id, final String shippingStatus) {
+    public boolean changeShippingStatus(final Long id, final String shippingStatus) {
         return shippingRepository.findByShppingId(id).map(shipping -> {
                 ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
                 shippingDetailInfo.setShippingStatus(shippingStatus);
@@ -30,7 +30,7 @@ public class ShippingService {
             }).orElse(false);
     }
 
-    public boolean changeShippingPosition(final String id, final String position) {
+    public boolean changeShippingPosition(final Long id, final String position) {
         return shippingRepository.findByShppingId(id).map(shipping -> {
             ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
             shippingDetailInfo.setPosition(position);
