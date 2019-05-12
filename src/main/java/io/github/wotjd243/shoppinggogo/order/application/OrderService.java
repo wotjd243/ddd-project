@@ -1,55 +1,87 @@
 package io.github.wotjd243.shoppinggogo.order.application;
 
+import io.github.wotjd243.shoppinggogo.cart.application.CartService;
 import io.github.wotjd243.shoppinggogo.cart.infra.CartRepository;
 import io.github.wotjd243.shoppinggogo.order.domain.Order;
 import io.github.wotjd243.shoppinggogo.order.domain.OrderRepository;
+import io.github.wotjd243.shoppinggogo.product.application.ProductService;
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.product.infra.ProductRepository;
+import io.github.wotjd243.shoppinggogo.user.application.UserService;
 import io.github.wotjd243.shoppinggogo.user.domain.User;
 import io.github.wotjd243.shoppinggogo.user.infra.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
-    private UserRepository userRepository;
-    private CartRepository cartRepository;
-    private ProductRepository productRepository;
+
     private OrderRepository orderRepository;
 
-    public Order makeOrder(Long userId, String cartId) {
-        Optional<User> maybeUser = Optional.ofNullable(userRepository.findById(userId).orElseThrow(IllegalArgumentException::new));
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private ProductService productService;
+
+    /**
+     *
+     * @param userId
+     * @return Order
+     */
+    public Order makeOrder(Long userId) {
+        Optional<User> maybeUser = Optional.ofNullable(userService.getUser(userId).orElseThrow(IllegalArgumentException::new));
         User user = maybeUser.get();
         Order order = new Order(user.getId());
-        order.enterOrderProducts( cartRepository.selectProductsToCart(userId));
-        order.enterAddress( user.getAddress());
-        order.enterPhone( user.getPhoneNumber());
+        order.setBuyerInfo(user.getAddress(),user.getPhoneNumber(), cartService.findProductsToCart(userId));
         return order;
     }
 
-    public int calculateOrderProductsPrice(long orderId){
-        Order order = getOrder(orderId);
-        int totalPrice = (int) order.getOrderProducts().stream().mapToLong(
+    /**
+     * @param orderId
+     * @return int totalPrice
+     */
+    public int sumOrderedProductsPrice(long orderId){
+        Order order = getOrderById(orderId);
+
+        int totalPrice = (int) order.getBuyerInfo().getOrderProducts().stream().mapToLong(
                 (productId) ->
-                productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new)
+                productService.findProductsById(productId).orElseThrow(IllegalArgumentException::new)
                         .findLowestPrice())
                         .sum();
         return totalPrice;
     }
-    public List<Product> getProductList ( long orderId){
-        Order order = getOrder(orderId);
-        List<Product> orderProducts = new ArrayList<Product>();
-        for ( long productId:order.getOrderProducts() ) {
-            orderProducts.add( productRepository.findbyId(productId).orElseThrow(IllegalArgumentException::new));
-        }
 
-        return orderProducts;
+    /**
+     *
+     * @param orderId
+     * @return List<Product>
+     */
+    public List<Product> getOrdedProducts( long orderId) {
+        Order order = getOrderById(orderId);
+        //y = f(x)
+        return order.getBuyerInfo().getOrderProducts().stream()
+                .map(productId ->
+                        productService.findProductsById(productId)
+                                .orElseThrow(IllegalArgumentException::new))
+                .collect(Collectors.toList());
     }
-    public Order getOrder( long orderId){
+
+    /**
+     *
+     * @param orderId
+     * @return Order
+     */
+    public Order getOrderById(long orderId){
         return orderRepository.findbyId(orderId)
                 .orElseThrow(IllegalAccessError::new);
     }

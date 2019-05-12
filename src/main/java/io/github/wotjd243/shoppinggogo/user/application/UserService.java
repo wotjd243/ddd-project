@@ -15,11 +15,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUser(final Long id){
-        return userRepository.findById(id).orElseThrow(IllegalAccessError::new);
+    public Optional<User> getUser(final Long id){
+        return Optional.ofNullable(userRepository.findById(id).orElseThrow(IllegalAccessError::new));
     }
 
-    public Boolean isUserLoggedIn(final Long id){
+    public Boolean checkRegisteredUserById(final Long id){
         Optional<User> user = userRepository.findById(id);
         if( !user.isPresent()) {
             return false;
