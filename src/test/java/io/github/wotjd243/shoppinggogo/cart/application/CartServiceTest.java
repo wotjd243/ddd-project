@@ -38,17 +38,6 @@ public class CartServiceTest {
         final List<Long> results = cartService.findProductIdsFromCart(1L);
         // then
         // 테스트 결과에 대한 검증
-
-        List<Long> product1s = Arrays.asList(1L,2L,3L);
-
-        given(cartRepository.findCartByUserId(1L)
-                .getProductIds()
-                .stream()
-                .collect(Collectors.toList()))
-                .willReturn(product1s);
-
-        final List<Long> results = cartService.findProductsFromCart(1L);
-
         assertThat(results)
                 .containsAnyOf(1L);
     }
