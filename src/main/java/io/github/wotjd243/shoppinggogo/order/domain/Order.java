@@ -1,7 +1,5 @@
 package io.github.wotjd243.shoppinggogo.order.domain;
 
-import io.github.wotjd243.shoppinggogo.cart.domain.Cart;
-import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.user.domain.Address;
 import io.github.wotjd243.shoppinggogo.user.domain.Phone;
 import lombok.Getter;
