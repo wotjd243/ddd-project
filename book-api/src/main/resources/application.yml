@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: local
+    include:
+      - core
+
+spring.jpa.open-in-view: false
+
+---
+spring:
+  profiles: local
+---
+spring:
+  profiles: develop
+---
+spring:
+  profiles: prod

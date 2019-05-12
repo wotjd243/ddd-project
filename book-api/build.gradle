@@ -1,0 +1,14 @@
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = true
+}
+
+dependencies {
+    api project(':book-core')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+}
