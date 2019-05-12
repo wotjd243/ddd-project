@@ -26,7 +26,7 @@ public class UserServiceTest {
     }
     @Test
     public void 회원가입했는지확인(){
-        userService.isUserLoggedIn(10l);
+        userService.checkRegisteredUserById(10l);
     }
 
 }
