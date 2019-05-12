@@ -1,7 +1,6 @@
 package io.github.wotjd243.shoppinggogo.cart.infra;
 
 
-import io.github.wotjd243.shoppinggogo.product.domain.Product;
 
 import java.util.List;
 
