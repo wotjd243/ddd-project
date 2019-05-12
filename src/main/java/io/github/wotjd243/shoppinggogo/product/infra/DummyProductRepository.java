@@ -9,7 +9,8 @@ import java.util.Optional;
 public class DummyProductRepository implements ProductRepository {
 
     @Override
-    public Optional<Product> findbyId(long productId) {
+    public Optional<Product> findById(long productId) {
         return Optional.ofNullable(DummayProductData.get(productId));
     }
+
 }
