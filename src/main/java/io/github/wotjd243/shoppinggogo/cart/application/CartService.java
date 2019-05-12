@@ -51,10 +51,8 @@ public class CartService {
      * @return Cart 에 담긴 제품 목록
      */
     public List<Long> findProductsToCart(Long userId) {
-
-        Cart cart = cartRepository.findCartByUserId(userId);
-
-        return cart.getProductIds();
+        return cartRepository.findCartByUserId(userId)
+                .getProductIds();
     }
 
 }

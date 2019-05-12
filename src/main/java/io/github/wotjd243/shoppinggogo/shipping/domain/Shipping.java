@@ -28,4 +28,7 @@ public class Shipping implements Serializable {
         return id;
     }
 
+    public ShippingDetailInfo getShippingDetail() {
+        return shippingDetail;
+    }
 }

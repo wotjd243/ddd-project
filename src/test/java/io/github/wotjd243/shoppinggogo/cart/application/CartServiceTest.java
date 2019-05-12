@@ -35,7 +35,9 @@ public class CartServiceTest {
 
         List<Long> product1s = Arrays.asList(1L,2L,3L);
 
-        given(cartRepository.selectProductsToCart(1L).stream()
+        given(cartRepository.findCartByUserId(1L)
+                .getProductIds()
+                .stream()
                 .collect(Collectors.toList()))
                 .willReturn(product1s);
 

@@ -6,7 +6,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
-@Getter
+
 public class BuyerInfo {
     private Address destination;
     private Phone phone;
@@ -25,4 +25,7 @@ public class BuyerInfo {
     }
 
 
+    public List<Long> getOrderProducts() {
+        return orderProducts;
+    }
 }

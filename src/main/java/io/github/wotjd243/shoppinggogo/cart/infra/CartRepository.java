@@ -9,6 +9,11 @@ import java.util.Optional;
 
 public interface CartRepository {
 
+    /**
+     * 유저 ID에 의해, 카드를 찾는다.
+     * @param userId 유저
+     * @return Cart 정보
+     */
     public Cart findCartByUserId(Long userId);
 
 }
