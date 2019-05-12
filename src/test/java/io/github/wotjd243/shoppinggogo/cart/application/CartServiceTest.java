@@ -41,7 +41,7 @@ public class CartServiceTest {
                 .collect(Collectors.toList()))
                 .willReturn(product1s);
 
-        final List<Long> results = cartService.findProductsToCart(1L);
+        final List<Long> results = cartService.findProductsFromCart(1L);
 
         assertThat(results)
                 .containsAnyOf(1L);
