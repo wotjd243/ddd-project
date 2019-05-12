@@ -2,12 +2,14 @@ package io.github.book.collected.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
+@Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class BookLocation {
     private String storeLocation;

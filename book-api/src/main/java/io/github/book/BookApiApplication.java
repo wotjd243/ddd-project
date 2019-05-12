@@ -3,7 +3,7 @@ package io.github.book;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class BookApiApplication {
 
     public static void main(String[] args) {

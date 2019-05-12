@@ -1,5 +1,6 @@
 package io.github.book.collected.domain;
 
+import io.github.book.collected.application.dto.CollectedBookDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -50,5 +51,9 @@ public class CollectedBook {
     public CollectedBook(String bookIsbn, BookLocation bookLocation) {
         this.bookIsbn = bookIsbn;
         this.bookLocation = bookLocation;
+    }
+
+    public CollectedBookDto toDto() {
+        return new CollectedBookDto(bookIsbn, bookLocation, bookRentStatus);
     }
 }

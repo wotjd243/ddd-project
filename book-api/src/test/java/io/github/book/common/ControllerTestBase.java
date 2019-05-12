@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @Disabled
 public class ControllerTestBase {
     @Autowired
-    private MockMvc mockMvc;
+    protected MockMvc mockMvc;
     @Autowired
     protected ObjectMapper objectMapper;
 }

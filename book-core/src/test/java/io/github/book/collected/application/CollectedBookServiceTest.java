@@ -3,6 +3,7 @@ package io.github.book.collected.application;
 import io.github.book.book.domain.Author;
 import io.github.book.book.domain.Book;
 import io.github.book.book.infra.BookRepository;
+import io.github.book.collected.application.dto.CollectedBookDto;
 import io.github.book.collected.domain.BookLocation;
 import io.github.book.collected.domain.CollectedBook;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,7 +48,7 @@ class CollectedBookServiceTest {
 
         BookLocation bookLocation = BookLocation.builder().bookshelfLocation("우리집 안방 책장 1A").storeLocation("우리집 안방").build();
         CollectedBook collectedBook = CollectedBook.builder().bookIsbn(book.getIsbn()).bookLocation(bookLocation).build();
-        collectedBookService.saveCollectedBook(collectedBook);
+        collectedBookService.saveCollectedBook(collectedBook.toDto());
 
         assertThat(collectedBook.getCollectedBookId()).isNotNull();
     }
@@ -59,7 +60,7 @@ class CollectedBookServiceTest {
 
         BookLocation bookLocation = BookLocation.builder().bookshelfLocation("우리집 안방 책장 1A").storeLocation("우리집 안방").build();
         CollectedBook collectedBook = CollectedBook.builder().bookIsbn(book.getIsbn()).bookLocation(bookLocation).build();
-        collectedBookService.saveCollectedBook(collectedBook);
+        collectedBookService.saveCollectedBook(collectedBook.toDto());
 
         List<CollectedBook> collectedBookList = collectedBookService.getRentAvailableCollectedBook();
         assertThat(collectedBookList).isNotNull();
@@ -71,10 +72,11 @@ class CollectedBookServiceTest {
 
         BookLocation bookLocation = BookLocation.builder().bookshelfLocation("우리집 안방 책장 1A").storeLocation("우리집 안방").build();
         CollectedBook collectedBook = CollectedBook.builder().bookIsbn(book.getIsbn()).bookLocation(bookLocation).build();
-        collectedBookService.saveCollectedBook(collectedBook);
+        collectedBookService.saveCollectedBook(collectedBook.toDto());
         collectedBook.rent();
 
         List<CollectedBook> collectedBookList = collectedBookService.getRentAvailableCollectedBook();
         assertThat(collectedBookList).isEmpty();
     }
+
 }
