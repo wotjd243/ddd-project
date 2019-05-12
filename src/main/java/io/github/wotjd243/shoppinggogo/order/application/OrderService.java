@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public class OrderService {
 
+
     private OrderRepository orderRepository;
 
     @Autowired
@@ -33,14 +34,16 @@ public class OrderService {
     @Autowired
     private ProductService productService;
 
+    public OrderService( OrderRepository orderRepository){
+        this.orderRepository = orderRepository;
+    }
     /**
      *
      * @param userId
      * @return Order
      */
     public Order makeOrder(Long userId) {
-        Optional<User> maybeUser = Optional.ofNullable(userService.getUser(userId).orElseThrow(IllegalArgumentException::new));
-        User user = maybeUser.get();
+        User user = userService.getUser(userId).orElseThrow(IllegalArgumentException::new);
         Order order = new Order(user.getId());
         order.setBuyerInfo(user.getAddress(),user.getPhoneNumber(), cartService.findProductsToCart(userId));
         return order;
@@ -48,17 +51,14 @@ public class OrderService {
 
     /**
      * @param orderId
-     * @return int totalPrice
+     * @return 주문 총 합계
      */
     public int sumOrderedProductsPrice(long orderId){
-        Order order = getOrderById(orderId);
-
-        int totalPrice = (int) order.getBuyerInfo().getOrderProducts().stream().mapToLong(
-                (productId) ->
+        return (int) getOrderById(orderId).getBuyerInfo().getOrderProducts().stream()
+                .mapToLong((productId) ->
                 productService.findProductsById(productId).orElseThrow(IllegalArgumentException::new)
                         .findLowestPrice())
                         .sum();
-        return totalPrice;
     }
 
     /**
@@ -67,9 +67,8 @@ public class OrderService {
      * @return List<Product>
      */
     public List<Product> getOrdedProducts( long orderId) {
-        Order order = getOrderById(orderId);
-        //y = f(x)
-        return order.getBuyerInfo().getOrderProducts().stream()
+
+        return getOrderById(orderId).getBuyerInfo().getOrderProducts().stream()
                 .map(productId ->
                         productService.findProductsById(productId)
                                 .orElseThrow(IllegalArgumentException::new))
@@ -79,11 +78,11 @@ public class OrderService {
     /**
      *
      * @param orderId
-     * @return Order
+     * @return Order 정보
      */
     public Order getOrderById(long orderId){
         return orderRepository.findbyId(orderId)
-                .orElseThrow(IllegalAccessError::new);
+                .orElseThrow(IllegalArgumentException::new);
     }
 
 }
