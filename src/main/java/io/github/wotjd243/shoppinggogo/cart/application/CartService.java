@@ -6,6 +6,7 @@ import io.github.wotjd243.shoppinggogo.cart.infra.CartRepository;
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.product.application.ProductService;
 import io.github.wotjd243.shoppinggogo.user.application.UserService;
+import io.github.wotjd243.shoppinggogo.user.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,12 @@ public class CartService {
     @Autowired
     private ProductService productService;
 
-    @Autowired
     private CartRepository cartRepository;
+
+    public CartService(CartRepository cartRepository) {
+        this.cartRepository = cartRepository;
+    }
+
 
     /**
      * @todo 추후, 구현
@@ -51,9 +56,7 @@ public class CartService {
      * @return Cart 에 담긴 제품 목록
      */
     public List<Long> findProductsFromCart(Long userId) {
-
         Cart cart = cartRepository.findCartByUserId(userId);
-
         return cart.getProductIds();
     }
 
