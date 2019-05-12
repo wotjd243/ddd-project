@@ -35,16 +35,15 @@ public class DummyCartData {
         product2s.add(product01);
         product2s.add(product02);
 
-        put(1L, 1L, Arrays.asList(1L), Arrays.asList(1L));
-        put(2L, 2L, Arrays.asList(1L, 2L), Arrays.asList(2L));
+        put(1L, 1L, Arrays.asList(1L));
+        put(2L, 2L, Arrays.asList(1L, 2L));
     }
 
     public static Cart getByUserId(final long userId) {
         return carts.get(userId);
     }
 
-    public static Cart put(final Long id, final long userId, final List<Long> productIds,
-                           final List<Long> checkedProductIds){
-        return carts.put(userId, new Cart(id, userId, productIds, checkedProductIds));
+    public static Cart put(final Long id, final long userId, final List<Long> productIds){
+        return carts.put(userId, new Cart(id, userId, productIds));
     }
 }

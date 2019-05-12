@@ -1,6 +1,7 @@
 package io.github.wotjd243.shoppinggogo.cart.application;
 
 
+import io.github.wotjd243.shoppinggogo.cart.domain.Cart;
 import io.github.wotjd243.shoppinggogo.cart.infra.CartRepository;
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.product.application.ProductService;
@@ -50,7 +51,10 @@ public class CartService {
      * @return Cart 에 담긴 제품 목록
      */
     public List<Long> findProductsToCart(Long userId) {
-        return cartRepository.selectProductsToCart(userId);
+
+        Cart cart = cartRepository.findCartByUserId(userId);
+
+        return cart.getProductIds();
     }
 
 }

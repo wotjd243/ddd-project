@@ -9,13 +9,15 @@ public class Cart {
     private Long id; //카트 키
     private Long userId; //유저 키
     private List<Long> productIds; //제품 목록
-    private List<Long> checkedProductIds; //체크되어진 제품 ID 목록
 
-    public Cart(Long id, Long userId, List<Long> productIds, List<Long> checkedProductIds) {
+    public Cart(Long id, Long userId, List<Long> productIds) {
         this.id = id;
         this.userId = userId;
-        this.productIds = productIds;
-        this.checkedProductIds = new ArrayList<>(checkedProductIds);
+        this.productIds = new ArrayList<>(productIds);
+    }
+
+    public boolean removeProductFromCart(Long productId) {
+        return productIds.remove(productId);
     }
 
     /**
@@ -27,11 +29,7 @@ public class Cart {
 
     }
 
-    /**
-     * 체크되어진 제품 ID 목록을 조회한다.
-     * @return 제품 ID 목록
-     */
-    public List<Long> getCheckedProductIds() {
-        return checkedProductIds;
+    public List<Long> getProductIds() {
+        return productIds;
     }
 }
