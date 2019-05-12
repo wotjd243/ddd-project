@@ -6,10 +6,7 @@ import io.github.book.collected.domain.CollectedBook;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -21,6 +18,11 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 @RequiredArgsConstructor
 public class CollectedBookRestController {
     private final CollectedBookService collectedBookService;
+
+    @GetMapping("collected-book")
+    public ResponseEntity collectedBookList() {
+        return ResponseEntity.ok(collectedBookService.getRentAvailableCollectedBook());
+    }
 
     @PostMapping("collected-book")
     public ResponseEntity save(@RequestBody CollectedBookDto collectedBookDto) throws URISyntaxException {

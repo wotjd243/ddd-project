@@ -1,9 +1,6 @@
 package io.github.book.collected.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.Embeddable;
@@ -11,6 +8,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
+@EqualsAndHashCode
 public class BookLocation {
     private String storeLocation;
     private String bookshelfLocation;

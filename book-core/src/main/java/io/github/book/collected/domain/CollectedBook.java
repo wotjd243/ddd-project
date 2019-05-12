@@ -1,20 +1,19 @@
 package io.github.book.collected.domain;
 
 import io.github.book.collected.application.dto.CollectedBookDto;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Table(name = "collected_book")
 public class CollectedBook {
     @Id
     @GeneratedValue
+    @Setter
     private Long collectedBookId;
 
     @Column(name = "book_isbn", nullable = false)
