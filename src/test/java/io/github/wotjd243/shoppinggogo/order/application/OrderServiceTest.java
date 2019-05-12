@@ -8,23 +8,43 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.mockito.ArgumentMatchers.any;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+
+import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceTest {
     @Mock
-    private UserRepository userRepository;
-    @Mock
-    private CartRepository cartRepository;
+    private OrderRepository orderRepository;
 
     @InjectMocks
     private OrderService orderService;
 
+
     @Test
-    public void 주문_도메인_생성(){
-        //repository를 두개 이상 쓸때는 어떻게 테스트를 하는지 궁금함
-//        given(CartRepository.selectProductsToCart(any()))
-//                .willReturn((Optional<User>) new Order(1L));
+    public void makeOrder() {
+        Order order = orderService.makeOrder(1L, Arrays.asList(1L,2L,3L));
+        List<Product> products = orderService.getOrdedProducts(1L);
+        List<Long> productList = new ArrayList<Long>();
+        productList.add(1L);
+        productList.add(2L);
+        productList.add(3L);
+
+
+        assertThat(order.getBuyerInfo().getOrderProducts()
+        assertThat(order.getBuyerInfo().getOrderProducts(), productList);
+
     }
 
+    @Test
+    public void sumOrderedProductsPrice() {
+    }
+
+    @Test
+    public void getOrdedProducts() {
+    }
 }
