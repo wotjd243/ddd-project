@@ -1,4 +1,5 @@
 rootProject.name = 'book'
 
 include 'book-core'
+include 'book-api'
 
