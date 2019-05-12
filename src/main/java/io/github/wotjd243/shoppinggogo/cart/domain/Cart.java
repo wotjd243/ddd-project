@@ -13,7 +13,6 @@ public class Cart {
     public Cart(Long id, Long userId, List<Long> productIds) {
         this.id = id;
         this.userId = userId;
-        System.out.println(productIds.toString());
         this.productIds = new ArrayList<>(productIds);
     }
 

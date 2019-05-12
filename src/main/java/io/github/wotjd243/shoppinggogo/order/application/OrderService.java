@@ -40,7 +40,7 @@ public class OrderService {
     public Order makeOrder(Long userId) {
         User user = userService.getUser(userId).orElseThrow(IllegalArgumentException::new);
         Order order = new Order(user.getId());
-        order.setBuyerInfo(user.getAddress(),user.getPhoneNumber(), cartService.findProductsFromCart(userId));
+        order.setBuyerInfo(user.getAddress(),user.getPhoneNumber(), cartService.findProductIdsFromCart(userId));
         return order;
     }
 
