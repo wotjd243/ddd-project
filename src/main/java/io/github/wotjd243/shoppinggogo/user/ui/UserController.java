@@ -15,12 +15,12 @@ public class UserController {
 
     @GetMapping("/user/{id}/loggedin")
     public Boolean isUserLogIn(@PathVariable Long id){
-        return userService.isUserLoggedIn(id);
+        return userService.checkRegisteredUserById(id);
     }
 
     @GetMapping("/user/{id}")
     public User getUserInfo(@PathVariable Long id){
-        return userService.getUser(id);
+        return userService.getUser(id).orElseThrow(IllegalArgumentException::new);
     }
 
 }

@@ -46,9 +46,6 @@ public class Cart {
 //        return checkedProductIds.forEach((p));
 //    }
 
-    public Long getId() {
-        return id;
-    }
 
     public List<Long> getProducts() {
         List<Long> productIds = new ArrayList<Long>();
