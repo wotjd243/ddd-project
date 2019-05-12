@@ -7,9 +7,11 @@ import io.github.wotjd243.shoppinggogo.product.application.ProductService;
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.user.application.UserService;
 import io.github.wotjd243.shoppinggogo.user.domain.User;
+import org.omg.PortableServer.THREAD_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,16 +33,18 @@ public class OrderService {
 
     public OrderService( OrderRepository orderRepository){
         this.orderRepository = orderRepository;
+        this.cartService = cartService;
     }
     /**
      *
      * @param userId
      * @return Order
      */
-    public Order makeOrder(Long userId) {
+    public Order makeOrder( Long userId ,List<Long> selectedProducts) {
         User user = userService.getUser(userId).orElseThrow(IllegalArgumentException::new);
+
         Order order = new Order(user.getId());
-        order.setBuyerInfo(user.getAddress(),user.getPhoneNumber(), cartService.findProductsToCart(userId));
+        order.setBuyerInfo(user.getAddress(),user.getPhoneNumber(), new ArrayList<Long>(selectedProducts));
         return order;
     }
 
