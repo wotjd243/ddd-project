@@ -1,8 +1,5 @@
 package io.github.wotjd243.shoppinggogo.product.domain;
 
-import lombok.Data;
-import lombok.Getter;
-
 import java.util.Date;
 
 public class PriceRecord {

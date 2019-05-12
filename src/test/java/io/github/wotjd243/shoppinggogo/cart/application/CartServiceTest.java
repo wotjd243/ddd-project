@@ -23,7 +23,6 @@ import static org.mockito.BDDMockito.given;
 @RunWith(MockitoJUnitRunner.class)
 public class CartServiceTest {
 
-
     @Mock
     private CartRepository cartRepository;
 
