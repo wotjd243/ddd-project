@@ -1,22 +1,14 @@
 package io.github.wotjd243.shoppinggogo.order.application;
 
 import io.github.wotjd243.shoppinggogo.cart.infra.CartRepository;
-import io.github.wotjd243.shoppinggogo.order.domain.Order;
-import io.github.wotjd243.shoppinggogo.user.domain.User;
-import io.github.wotjd243.shoppinggogo.user.infra.UserRepository;
+import io.github.wotjd243.shoppinggogo.user.domain.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Optional;
-
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceTest {

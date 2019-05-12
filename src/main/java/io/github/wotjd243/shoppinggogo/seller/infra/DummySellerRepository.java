@@ -13,4 +13,10 @@ public class DummySellerRepository implements SellerRepository {
     public Optional<Seller> findBySellerId(Long sellerId) {
         return Optional.ofNullable(DummySellerData.get(sellerId));
     }
+
+    @Override
+    public boolean updateSellerInfo(Seller seller) {
+
+        return DummySellerData.update(seller);
+    }
 }

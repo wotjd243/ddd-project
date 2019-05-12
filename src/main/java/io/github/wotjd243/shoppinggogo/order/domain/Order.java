@@ -4,7 +4,6 @@ import io.github.wotjd243.shoppinggogo.user.domain.Address;
 import io.github.wotjd243.shoppinggogo.user.domain.Phone;
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 //유저 장바구니 목록에 있는 것을 종합하여 주문한다.

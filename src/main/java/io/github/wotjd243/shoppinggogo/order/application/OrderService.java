@@ -1,20 +1,15 @@
 package io.github.wotjd243.shoppinggogo.order.application;
 
 import io.github.wotjd243.shoppinggogo.cart.application.CartService;
-import io.github.wotjd243.shoppinggogo.cart.infra.CartRepository;
 import io.github.wotjd243.shoppinggogo.order.domain.Order;
 import io.github.wotjd243.shoppinggogo.order.domain.OrderRepository;
 import io.github.wotjd243.shoppinggogo.product.application.ProductService;
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
-import io.github.wotjd243.shoppinggogo.product.infra.ProductRepository;
 import io.github.wotjd243.shoppinggogo.user.application.UserService;
 import io.github.wotjd243.shoppinggogo.user.domain.User;
-import io.github.wotjd243.shoppinggogo.user.infra.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

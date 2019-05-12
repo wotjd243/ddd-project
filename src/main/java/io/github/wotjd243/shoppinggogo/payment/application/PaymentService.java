@@ -1,5 +1,6 @@
 package io.github.wotjd243.shoppinggogo.payment.application;
 
+import io.github.wotjd243.shoppinggogo.order.application.OrderService;
 import io.github.wotjd243.shoppinggogo.order.domain.Order;
 import io.github.wotjd243.shoppinggogo.payment.domain.Amount;
 import io.github.wotjd243.shoppinggogo.payment.domain.PaymentRepository;
@@ -18,36 +19,32 @@ public class PaymentService {
 
     private UserService userService;
     private SellerService sellerService;
-//    private OrderService orderService;
-
+    private OrderService orderService;
     private PaymentRepository paymentRepository;
-    /*
+
     public PaymentService(UserService userService, SellerService sellerRepository, OrderService orderService, PaymentRepository paymentRepository) {
         this.userService = userService;
         this.sellerService = sellerService;
-        this.sellerService = sellerService;
+        this.orderService = orderService;
         this.paymentRepository = paymentRepository;
-    }*/
+    }
 
-    public void processOrder(String orderId, String userId, String sellerId, String paymentType ) {
-/*
-        User user = this.userService.getUser(userId);
+    public void processOrder(Long orderId, Long userId, Long sellerId, String paymentType ) {
+
+        User user = this.userService.getUser(userId).orElseThrow(IllegalArgumentException::new);
         Seller seller = this.sellerService.getSeller(sellerId).orElseThrow(IllegalArgumentException::new);
-        Order order = new Order();
 
-        PaymentMethod payment = null;
+        PaymentMethod paymentMethod = null;
+
         if( paymentType.contains(PaymentType.CARD.getValue())) {
-            payment = new CardPayment();
+            paymentMethod = new CardPayment(userService, sellerService);
         } else if(paymentType.contains(PaymentType.CASH.getValue())) {
-            payment = new CashPayment();
+            paymentMethod = new CashPayment(userService, sellerService);
         }
 
-//        orderService.getTotalAmount();
-        // orderService의 totalAmount을 사용
-        payment.pay(userService, sellerService, Amount.valueOf(1111));
+        paymentMethod.pay(user, seller,  Amount.valueOf(this.orderService.sumOrderedProductsPrice(orderId)) );
+        this.paymentRepository.save(new Date(), 1l, orderId, Amount.valueOf(this.orderService.sumOrderedProductsPrice(orderId)), userId );
 
-        this.paymentRepository.save(new Date(), UUID.randomUUID().toString(), orderId, Amount.valueOf(111), userId );
-*/
     }
 
 }
