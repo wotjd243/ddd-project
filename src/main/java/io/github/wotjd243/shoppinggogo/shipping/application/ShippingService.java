@@ -1,6 +1,7 @@
 package io.github.wotjd243.shoppinggogo.shipping.application;
 
 import io.github.wotjd243.shoppinggogo.shipping.domain.Shipping;
+import io.github.wotjd243.shoppinggogo.shipping.domain.ShippingDetailInfo;
 import io.github.wotjd243.shoppinggogo.shipping.domain.ShippingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,8 @@ public class ShippingService {
 
         Shipping shipping = shippingRepository.findByShppingId(id).get();
         if( shipping != null) {
-            shipping.setShippingStatus(shippingStatus);
+            ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
+            shippingDetailInfo.setShippingStatus(shippingStatus);
         }
 
         return shippingRepository.updateShipping(shipping);
@@ -35,7 +37,8 @@ public class ShippingService {
 
         Shipping shipping = shippingRepository.findByShppingId(id).get();
         if( shipping != null) {
-            shipping.setPosition(position);
+            ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
+            shippingDetailInfo.setPosition(position);
         }
         return shippingRepository.updateShipping(shipping);
     }

@@ -20,4 +20,12 @@ public class ShippingDetailInfo {
         this.position = position;
         ProcessedDate = processedDate;
     }
+
+    public void setShippingStatus(String shippingStatus) {
+        this.shippingStatus = shippingStatus;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
 }
