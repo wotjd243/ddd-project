@@ -1,20 +1,19 @@
 package io.github.wotjd243.shoppinggogo.product.application;
 
 import io.github.wotjd243.shoppinggogo.product.domain.Category;
-import io.github.wotjd243.shoppinggogo.product.domain.PriceRecord;
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
 import io.github.wotjd243.shoppinggogo.product.infra.ProductRepository;
 import jdk.nashorn.internal.runtime.options.Option;
+import org.springframework.beans.factory.annotation.Autowired;
+import io.github.wotjd243.shoppinggogo.product.domain.ProductRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 public class ProductService {
 
-
+    @Autowired
     private ProductRepository productRepository;
 
     /**

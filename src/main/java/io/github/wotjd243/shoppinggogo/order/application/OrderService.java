@@ -51,7 +51,7 @@ public class OrderService {
     public int sumOrderedProductsPrice(long orderId){
         return (int) getOrderById(orderId).getBuyerInfo().getOrderProducts().stream()
                 .mapToLong((productId) ->
-                productService.findProductsById(productId).orElseThrow(IllegalArgumentException::new)
+                productService.findProductById(productId).orElseThrow(IllegalArgumentException::new)
                         .findLowestPrice())
                         .sum();
     }
@@ -65,7 +65,7 @@ public class OrderService {
 
         return getOrderById(orderId).getBuyerInfo().getOrderProducts().stream()
                 .map(productId ->
-                        productService.findProductsById(productId)
+                        productService.findProductById(productId)
                                 .orElseThrow(IllegalArgumentException::new))
                 .collect(Collectors.toList());
     }

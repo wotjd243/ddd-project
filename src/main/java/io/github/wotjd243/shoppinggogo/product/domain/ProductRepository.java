@@ -1,4 +1,4 @@
-package io.github.wotjd243.shoppinggogo.product.infra;
+package io.github.wotjd243.shoppinggogo.product.domain;
 
 
 import io.github.wotjd243.shoppinggogo.product.domain.Product;
