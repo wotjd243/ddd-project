@@ -22,12 +22,8 @@ public class CartService {
     @Autowired
     private ProductService productService;
 
+    @Autowired
     private CartRepository cartRepository;
-
-    public CartService(CartRepository cartRepository) {
-        this.cartRepository = cartRepository;
-    }
-
 
     /**
      * @todo 추후, 구현
@@ -57,7 +53,10 @@ public class CartService {
      * @return Cart 에 담긴 제품 ID 목록
      */
     public List<Long> findProductIdsFromCart(Long userId) {
+    public List<Long> findProductsFromCart(Long userId) {
+
         Cart cart = cartRepository.findCartByUserId(userId);
+
         return cart.getProductIds();
     }
 

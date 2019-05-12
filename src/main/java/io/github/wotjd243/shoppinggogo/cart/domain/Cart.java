@@ -32,13 +32,4 @@ public class Cart {
     public List<Long> getProductIds() {
         return productIds;
     }
-
-    @Override
-    public String toString() {
-        return "Cart{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", productIds=" + productIds +
-                '}';
-    }
 }
