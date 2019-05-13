@@ -36,7 +36,6 @@ public class OrderController {
      */
     @GetMapping("/order/id/")
     public List<Product> getOrderProducts( @RequestParam long orderId){
-        System.out.println(orderId);
         return orderService.getOrdedProducts(orderId);
     }
 

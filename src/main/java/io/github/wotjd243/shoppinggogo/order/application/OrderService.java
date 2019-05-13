@@ -64,12 +64,11 @@ public class OrderService {
     }
 
     /**
-     *
+     *orderid로 조회한 상품객체 
      * @param orderId
      * @return List<Product>
      */
     public List<Product> getOrdedProducts( long orderId) {
-
         return getOrderById(orderId).getBuyer().getOrderProducts().stream()
                 .map(productId ->
                         productService.findProductById(productId)
