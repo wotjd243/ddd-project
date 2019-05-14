@@ -7,18 +7,14 @@ import java.util.Date;
 
 public class Payment {
 
-    private Date paymentDate;  // 결제일자
-    private Long id; // 결제번호 { 20190315NP1385814158}
-    private String orderId;    // 상품정보, 상품금액 ,판매자 ( 주문정보 )
-    private Amount amountForPayment; // 결제할 돈
-    private String userId; //유저
+    private final Long id; // 결제번호 { 20190315NP1385814158}
+    private final Date paymentDate;  // 결제일자
+    private PaymentDetailInfo paymentDetailInfo;
 
     public Payment(Date paymentDate, Long id, String orderId, Amount amountForPayment, String userId) {
-        this.paymentDate = paymentDate;
+        this.paymentDate = new Date(paymentDate.getTime());
         this.id = id;
-        this.orderId = orderId;
-        this.amountForPayment = amountForPayment;
-        this.userId = userId;
+
     }
 }
 

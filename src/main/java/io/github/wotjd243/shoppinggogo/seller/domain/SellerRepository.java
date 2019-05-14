@@ -5,5 +5,6 @@ import java.util.Optional;
 
 public interface SellerRepository {
     Optional<Seller> findBySellerId(final Long sellerId);
+    boolean updateSellerInfo(final Seller seller);
 
 }

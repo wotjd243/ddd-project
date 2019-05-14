@@ -11,8 +11,8 @@ import java.util.Optional;
 public class ShippingRepositoryImpl implements ShippingRepository {
 
     @Override
-    public Optional<Shipping> findByShppingId(final String shippingNum) {
-        return Optional.ofNullable(DummyShippingData.get( shippingNum));
+    public Optional<Shipping> findByShppingId(final Long shippingId) {
+        return Optional.ofNullable(DummyShippingData.get(shippingId));
     }
 
     @Override

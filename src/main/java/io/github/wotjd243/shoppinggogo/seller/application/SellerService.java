@@ -21,4 +21,9 @@ public class SellerService {
         return this.sellerRepository.findBySellerId(sellerId);
     }
 
+    public boolean addPointToSeller(final Long sellerId, final int point) {
+        Seller seller = sellerRepository.findBySellerId(sellerId).orElseThrow(IllegalArgumentException::new);
+        seller.profitPoint(point);
+        return sellerRepository.updateSellerInfo(seller);
+    }
 }
