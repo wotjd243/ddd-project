@@ -1,10 +1,6 @@
 package io.github.wotjd243.findbyhint.hunter.domain;
 
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
-
 public class Hunter {
-
-    // TODO (1) 올바른 Exception 처리 관련 질문해서 반영하기.
 
     private final HunterId hunterId;
 

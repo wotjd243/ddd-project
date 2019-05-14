@@ -15,9 +15,7 @@ public class HunterPoint {
     }
 
     private void validation(int hunterPoint) {
-
         Check.numberLimit(hunterPoint, 99999);
-
     }
 
     public boolean bulletBuyPointCheck() {

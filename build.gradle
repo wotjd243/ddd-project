@@ -25,18 +25,13 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
-<<<<<<< HEAD
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-=======
 
->>>>>>> ef21982818b32250d0f98ae0e08c9fdaa81d2658
     // webjars
     implementation 'org.webjars:webjars-locator:0.36'
     implementation 'org.webjars:jquery:3.4.0'
     implementation 'org.webjars:popper.js:1.15.0'
     implementation 'org.webjars:bootstrap:4.3.1'
     //타임리프 템플릿
-    // https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect
     compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.3.0'
 
 
@@ -45,5 +40,4 @@ dependencies {
     compile group: 'com.google.zxing', name: 'core', version: '3.3.0'
     // https://mvnrepository.com/artifact/com.google.zxing/javase
     compile group: 'com.google.zxing', name: 'javase', version: '3.3.0'
-
 }
