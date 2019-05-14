@@ -13,4 +13,7 @@ public class DummyUserRepository implements UserRepository {
         return Optional.ofNullable(DummyUserData.get(id));
     }
 
+    public boolean updateUserInfo(User user) {
+        return DummyUserData.update(user);
+    }
 }

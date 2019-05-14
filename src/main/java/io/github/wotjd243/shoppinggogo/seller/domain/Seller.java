@@ -13,7 +13,7 @@ public class Seller {
     private GeneralEmail email;
     private GeneralBusinessNumber businessNum;
     private String addresss;
-
+    private int point;
 
     public Seller(Long id, String brandName, String president, GeneralPhoneNumber phoneNum, GeneralEmail email, GeneralBusinessNumber businessNum, String addresss) {
         this.id = id;
@@ -25,4 +25,11 @@ public class Seller {
         this.addresss = addresss;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void profitPoint(int point) {
+        this.point = this.point + point;
+    }
 }
