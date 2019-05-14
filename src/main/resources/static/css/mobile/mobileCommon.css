@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+@media screen and (min-width:1500px) {}
+
+@media screen and (min-width:992px) {}
+
+@media screen and (max-width:991px) {}
+
+@media screen and (min-width:992px) and (max-width:1299px) {}
+
+@media screen and (min-width:992px) and (max-width:1199px) {}
+
+@media screen and (max-width: 991px) and (min-width: 646px) {}
+
+@media screen and (max-width:645px) {}
+
+@media screen and (max-width:480px) {}

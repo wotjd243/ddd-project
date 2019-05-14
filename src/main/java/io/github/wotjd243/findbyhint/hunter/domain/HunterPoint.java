@@ -15,10 +15,29 @@ public class HunterPoint {
     }
 
     private void validation(int hunterPoint) {
+        Check.numberLimit(hunterPoint, 99999);
+    }
 
-        Check.numberLimit(hunterPoint,99999);
+    public boolean bulletBuyPointCheck() {
+        if (hunterPoint > 100) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    public HunterPoint hunterPointMinus(int minus) {
+        hunterPoint = hunterPoint - minus;
+        return new HunterPoint(hunterPoint);
     }
 
 
+    public HunterPoint hunterPointPlus(int plus) {
+        hunterPoint = hunterPoint + plus;
+        return new HunterPoint(hunterPoint);
+    }
+
+    public int getHunterPoint() {
+        return hunterPoint;
+    }
 }

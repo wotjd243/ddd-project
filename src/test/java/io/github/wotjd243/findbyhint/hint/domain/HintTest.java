@@ -1,5 +1,7 @@
 package io.github.wotjd243.findbyhint.hint.domain;
+
 import org.junit.Test;
+
 public class HintTest {
     @Test
     public void 힌트인벤토리생성(){
@@ -15,7 +17,6 @@ public class HintTest {
         // then
     }
 
-
     @Test
     public void 힌트생성(){
         // given
@@ -24,8 +25,5 @@ public class HintTest {
         Hint hintNum = Hint.valueOfHintNum(number);
         // then
     }
-
-
-
 
 }

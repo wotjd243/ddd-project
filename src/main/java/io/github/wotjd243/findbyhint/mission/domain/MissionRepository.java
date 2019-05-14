@@ -7,6 +7,4 @@ import java.util.Optional;
 @Repository
 public interface MissionRepository {
     Optional<Mission> findById(final MissionLevel level);
-
-//    Optional<Mission> findByLevel(final String level);
 }

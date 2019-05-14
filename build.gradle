@@ -25,6 +25,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
+
     // webjars
     implementation 'org.webjars:webjars-locator:0.36'
     implementation 'org.webjars:jquery:3.4.0'
@@ -39,5 +40,4 @@ dependencies {
     compile group: 'com.google.zxing', name: 'core', version: '3.3.0'
     // https://mvnrepository.com/artifact/com.google.zxing/javase
     compile group: 'com.google.zxing', name: 'javase', version: '3.3.0'
-
 }
