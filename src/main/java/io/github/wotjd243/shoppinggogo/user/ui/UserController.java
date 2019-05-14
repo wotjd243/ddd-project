@@ -10,17 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private UserService userService;
+
+    public UserController(final UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/user/{id}/loggedin")
     public Boolean isUserLogIn(@PathVariable Long id){
-        return userService.isUserLoggedIn(id);
+        return userService.checkRegisteredUserById(id);
     }
 
     @GetMapping("/user/{id}")
     public User getUserInfo(@PathVariable Long id){
-        return userService.getUser(id);
+        return userService.getUser(id).orElseThrow(IllegalArgumentException::new);
     }
 
 }

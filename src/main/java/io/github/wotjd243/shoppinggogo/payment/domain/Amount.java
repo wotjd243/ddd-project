@@ -7,7 +7,7 @@ public class Amount {
 
     public static final int MINIMUM_NUMBER = 1;
     // 1억이상 결제 x
-    public static final int MAXIMUM_NUMBER = 100000000;
+    public static final int MAXIMUM_NUMBER = 100_000_000;
 
     private int amount;
 
@@ -38,5 +38,9 @@ public class Amount {
 
     public  static Amount valueOf(final int amount) {
         return new Amount(amount);
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }

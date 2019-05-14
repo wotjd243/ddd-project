@@ -7,5 +7,5 @@ import io.github.wotjd243.shoppinggogo.user.application.UserService;
 import io.github.wotjd243.shoppinggogo.user.domain.User;
 
 public interface PaymentMethod {
-    public void pay(UserService userService, SellerService sellerService, Amount amount);
+    public void pay(User user, Seller seller, Amount amount);
 }

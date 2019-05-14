@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,7 +32,6 @@ public class CartService {
      * @param product Cart에 추가 될 제품
      */
     public void addProductToCart(Long userId, Product product) {
-
     }
 
     /**
@@ -46,25 +46,25 @@ public class CartService {
     }
 
     /**
-     * Cart 에 담긴 제품 목록을 찾는다.
-     *
-     * @param userId 유저 ID
-     * @return Cart 에 담긴 제품 목록
-     */
-    public List<Product> findProductsToCart(Long userId) {
-        return cartRepository.selectProductsToCart(userId);
-    }
-
-    /**
      * Cart 에 담긴 제품 ID 목록을 찾는다.
      *
      * @param userId 유저 ID
      * @return Cart 에 담긴 제품 ID 목록
      */
-    public List<Long> findProductIdsToCart(Long userId) {
-        return cartRepository.selectProductsToCart(userId).stream()
-                .map(product -> product.getId())
-                .collect(Collectors.toList());
+    public List<Long> findProductIdsFromCart(Long userId) {
+        return cartRepository.findCartByUserId(userId).getProductIds();
     }
 
+    /**
+     * Cart 에 담긴 제품 목록을 찾는다.
+     * @param userId 유저 ID
+     * @return Cart 에 담긴 제품 목록
+     */
+    public List<Product> findProductsFromCart(Long userId) {
+        return cartRepository.findCartByUserId(userId).getProductIds().stream().map(productId ->
+            productService.findProductById(productId))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+    }
 }

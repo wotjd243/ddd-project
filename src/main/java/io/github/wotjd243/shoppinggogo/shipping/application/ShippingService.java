@@ -1,6 +1,7 @@
 package io.github.wotjd243.shoppinggogo.shipping.application;
 
 import io.github.wotjd243.shoppinggogo.shipping.domain.Shipping;
+import io.github.wotjd243.shoppinggogo.shipping.domain.ShippingDetailInfo;
 import io.github.wotjd243.shoppinggogo.shipping.domain.ShippingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,27 +18,24 @@ public class ShippingService {
         this.shippingRepository = shippingRepository;
     }
 
-    public Optional<Shipping> getShippingInfo(final String id){
+    public Optional<Shipping> getShippingInfo(final Long id){
         return shippingRepository.findByShppingId(id);
     }
 
-    public boolean changeShippingStatus(final String id, final String shippingStatus) {
-
-        Shipping shipping = shippingRepository.findByShppingId(id).get();
-        if( shipping != null) {
-            shipping.setShippingStatus(shippingStatus);
-        }
-
-        return shippingRepository.updateShipping(shipping);
+    public boolean changeShippingStatus(final Long id, final String shippingStatus) {
+        return shippingRepository.findByShppingId(id).map(shipping -> {
+                ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
+                shippingDetailInfo.setShippingStatus(shippingStatus);
+                return shippingRepository.updateShipping(shipping);
+            }).orElse(false);
     }
 
-    public boolean changeShippingPosition(final String id, final String position) {
-
-        Shipping shipping = shippingRepository.findByShppingId(id).get();
-        if( shipping != null) {
-            shipping.setPosition(position);
-        }
-        return shippingRepository.updateShipping(shipping);
+    public boolean changeShippingPosition(final Long id, final String position) {
+        return shippingRepository.findByShppingId(id).map(shipping -> {
+            ShippingDetailInfo shippingDetailInfo = shipping.getShippingDetail();
+            shippingDetailInfo.setPosition(position);
+            return shippingRepository.updateShipping(shipping);
+        }).orElse(false);
     }
 
 

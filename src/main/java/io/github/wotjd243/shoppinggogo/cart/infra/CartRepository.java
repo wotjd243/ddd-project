@@ -1,18 +1,19 @@
 package io.github.wotjd243.shoppinggogo.cart.infra;
 
 
-import io.github.wotjd243.shoppinggogo.product.domain.Product;
+
+import io.github.wotjd243.shoppinggogo.cart.domain.Cart;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CartRepository {
 
     /**
-     * Cart 에 담긴 제품 목록을 조회한다.
-     * @param userId 유저 ID
-     * @return Cart 에 담긴 제품 목록
+     * 유저 ID에 의해, 카드를 찾는다.
+     * @param userId 유저
+     * @return Cart 정보
      */
-    public List<Product> selectProductsToCart(Long userId);
-
+    public Cart findCartByUserId(Long userId);
 
 }

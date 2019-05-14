@@ -1,9 +1,11 @@
 package io.github.wotjd243.shoppinggogo.shipping.domain;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GeneralBusinessNumber {
+
+    private final Pattern BUSINESS_NUMBER_PATTERN = Pattern.compile("^\\d{3}-\\d{2}-\\d{4}$");
+
     public String businessNum;
 
     private GeneralBusinessNumber(final String businessNum) {
@@ -12,12 +14,7 @@ public class GeneralBusinessNumber {
     }
 
     private void validate(final String businessNum) {
-        String ePattern = "^\\d{3}-\\d{2}-\\d{4}$";
-
-        Pattern p = Pattern.compile(ePattern);
-        Matcher m = p.matcher(businessNum);
-
-        if( !m.matches() ) {
+       if( !BUSINESS_NUMBER_PATTERN.matcher(businessNum).matches() ) {
             throw new IllegalArgumentException();
         }
     }
