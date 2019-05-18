@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import java.nio.file.AccessDeniedException;
-
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -86,15 +84,4 @@ public class GlobalExceptionHandler {
     protected String handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         return "NO";
     }
-
-    @ExceptionHandler(AccessDeniedException.class)
-    protected String handleAccessDeniedException(AccessDeniedException e) {
-        return "NO";
-    }
-//
-//    @ExceptionHandler(Exception.class)
-//    protected ResponseEntity<ErrorResponse> handleException(Exception e) {
-//        final ErrorResponse response = ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
-//        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
 }
